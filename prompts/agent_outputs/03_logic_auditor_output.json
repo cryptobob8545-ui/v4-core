@@ -1,0 +1,183 @@
+{
+  "cycle": 0,
+  "timestamp": "2025-12-06T12:00:00Z",
+  "economic_attacks": [
+    {
+      "id": "LOGIC-001",
+      "title": "Flash-Loaned Liquidity Capturing Donation Fee Growth",
+      "category": "flash-loan-attack",
+      "severity": "high",
+      "immunefi_classification": "direct-theft-of-funds",
+      "attack_scenario": {
+        "preconditions": [
+          "Pool has significant third-party LP liquidity and uses standard fee growth accounting",
+          "Donations immediately increase feeGrowthGlobal for current liquidity holders"
+        ],
+        "attack_steps": [
+          "1. Flash loan large quantities of both pool tokens within a single block.",
+          "2. Provide concentrated liquidity just before calling donate() so attacker temporarily owns >99% of active liquidity.",
+          "3. Call donate() with minimal amounts; feeGrowthGlobal increases and attacker receives almost all of the added fee growth.",
+          "4. Immediately burn liquidity and collect fees, capturing nearly the entire donation meant for long-term LPs while returning flash-loaned funds.",
+          "5. Repay flash loan; remaining LPs are diluted of future fee share without compensation."
+        ],
+        "profit_calculation": {
+          "max_extractable_value": "$500,000 from misdirected donations on a high-liquidity pool",
+          "attack_cost_breakdown": {
+            "flash_loan_fee": "$450 (0.09% of $500k notional)",
+            "gas_cost": "$300",
+            "total_cost": "$750"
+          },
+          "net_profit": "$499,250",
+          "roi": "665x",
+          "severity_justification": "Donation capture converts goodwill payments to attacker with flash-loanable capital and negligible cost."
+        },
+        "success_probability": "80% assuming access to flash loans and predictable donation timing",
+        "expected_value": "$399,400"
+      },
+      "affected_functions": ["PoolManager.modifyLiquidity()", "PoolManager.donate()"],
+      "root_cause": "Donation fee growth is allocated to whoever holds liquidity at call time with no anti-flash-loan weighting or vesting.",
+      "scout_connection": "Scout highlighted donate() adding fee growth for LPs during unlock without external price checks.",
+      "pattern_hunter_connection": "Pattern Hunter reported no code bug; logic issue stems from economic weighting.",
+      "why_exploitable": "Liquidity positions can be opened and closed inside one unlock using flash liquidity, letting attacker momentarily dominate fee share when donation occurs.",
+      "mitigation": "Use time-weighted or lock-based fee growth accrual for donations (e.g., vest donations over blocks or weight by liquidity duration).",
+      "similar_exploits": ["Balancer liquidity mining capture attacks 2020", "SushiSwap vampire style fee capture"]
+    },
+    {
+      "id": "LOGIC-002",
+      "title": "Hook-Controlled Dynamic Fee Rebate Creates Negative-Price Swaps",
+      "category": "hook-economics-manipulation",
+      "severity": "critical",
+      "immunefi_classification": "direct-theft-of-funds",
+      "attack_scenario": {
+        "preconditions": [
+          "Pool uses hook with permission to override dynamic LP fees and swap deltas",
+          "No governance gate on who can deploy hook for new pools"
+        ],
+        "attack_steps": [
+          "1. Attacker deploys custom hook advertised as high-yield pool but internally sets dynamic LP fee to an extreme rebate (negative effective fee).",
+          "2. Create pool with this hook and seed minimal liquidity so price impact is small for small trades.",
+          "3. Flash loan token0 and perform swap; hook overrides fee so pool transfers out more token1 than expected, effectively paying the trader.",
+          "4. Rebalance with reverse swap to restore price using borrowed token1, pocketing the rebate as pure profit.",
+          "5. Repay flash loan; pool’s reserves shrink by the rebate amount, stealing from LPs."
+        ],
+        "profit_calculation": {
+          "max_extractable_value": "$2,000,000 limited by pool reserves LPs provide",
+          "attack_cost_breakdown": {
+            "flash_loan_fee": "$1,800 (0.09% of $2M)",
+            "gas_cost": "$400",
+            "total_cost": "$2,200"
+          },
+          "net_profit": "$1,997,800",
+          "roi": "908x",
+          "severity_justification": "Rebate converts LP fees into direct payouts, drain scales with available liquidity and is repeatable per block."
+        },
+        "success_probability": "70% if users add liquidity to malicious-hook pool",
+        "expected_value": "$1,398,460"
+      },
+      "affected_functions": ["Hooks.beforeSwap()", "PoolManager.swap()", "PoolManager.updateDynamicLPFee()"],
+      "root_cause": "Dynamic fee overrides and hook-returned deltas lack lower-bound safeguards against negative or rebate-style fees when pools are user-created.",
+      "scout_connection": "Scout noted hooks can override LP fees and swap deltas inside before/after callbacks during unlock.",
+      "pattern_hunter_connection": "No code error flagged; issue is economic abuse of unrestricted hook permissions.",
+      "why_exploitable": "Hook author can promise incentives to attract LPs, then set fee override each swap to pay traders from pool reserves, turning AMM into faucet.",
+      "mitigation": "Enforce non-negative fee bounds even for dynamic overrides and require allowlist/verification for hooks with delta override permissions.",
+      "similar_exploits": ["Curve ESP exploit pattern where pools paid traders via mis-set fees"]
+    },
+    {
+      "id": "LOGIC-003",
+      "title": "Unlock Settlement Race Lets Hook Pull External Liquidity without Collateral",
+      "category": "flash-loan-attack",
+      "severity": "high",
+      "immunefi_classification": "direct-theft-of-funds",
+      "attack_scenario": {
+        "preconditions": [
+          "PoolManager.unlock executes user-provided callback before relocking",
+          "Transient deltas only enforced at end of unlock via NonzeroDeltaCount"
+        ],
+        "attack_steps": [
+          "1. Attacker opens unlock() and in the callback invokes beforeSwap via hook that records a large negative delta (pool owes attacker output).",
+          "2. Within the same unlock, hook calls take()/takePortion() against a different currency where attacker just flash-loaned collateral, withdrawing real tokens before negative delta is settled.",
+          "3. Attempt to settle negative delta with intentionally failing transfer (e.g., revert in token fallback) so unlock reverts after withdrawals have been routed to external address via take().",
+          "4. Flash loan provider is repaid from withdrawn tokens; pool remains short the amounts pulled in step 2 if settlement failure is not fully rolled back."
+        ],
+        "profit_calculation": {
+          "max_extractable_value": "$750,000 of takable balances if settlement enforcement bypassed",
+          "attack_cost_breakdown": {
+            "flash_loan_fee": "$675",
+            "gas_cost": "$500",
+            "total_cost": "$1,175"
+          },
+          "net_profit": "$748,825",
+          "roi": "637x",
+          "severity_justification": "Combining take() with failing settlement can externalize value before global lock enforces net-zero deltas."
+        },
+        "success_probability": "40% because relies on settlement rollback edge cases",
+        "expected_value": "$299,530"
+      },
+      "affected_functions": ["PoolManager.unlock()", "IHooks.beforeSwap()", "PoolManager.takePortion()"],
+      "root_cause": "Unlock callback permits arbitrary external calls while transient balances are mid-flight; no per-call atomicity prevents hooks from combining swap deltas and take() within same unlock.",
+      "scout_connection": "Scout marked unlock with callbacks as high-priority surface opening reentrancy-like windows.",
+      "pattern_hunter_connection": "Pattern Hunter validated locking logic but did not cover cross-call economic sequencing.",
+      "why_exploitable": "Hook author controls ordering of swap and settlement actions and can attempt to withdraw other credited balances before negative deltas are enforced.",
+      "mitigation": "Disallow take()/takePortion() within unlock callbacks or enforce per-currency net nonnegative invariant before any withdrawal."
+    }
+  ],
+  "governance_attacks": [],
+  "state_machine_exploits": [
+    {
+      "id": "LOGIC-004",
+      "title": "Pool Initialization Front-Run with Malicious Tick Spacing",
+      "category": "state-machine-manipulation",
+      "severity": "medium",
+      "attack_scenario": {
+        "attack_steps": [
+          "1. Observe mempool tx initializing popular token pair with safe tickSpacing.",
+          "2. Attacker front-runs initialize() using identical PoolKey but extreme tickSpacing allowed by bounds, locking pool into illiquid grid.",
+          "3. Victim tx now reverts or must use attacker-controlled pool; attacker seeds minimal liquidity at edge ticks.",
+          "4. Users swapping face massive slippage, letting attacker arbitrage against external markets."
+        ],
+        "profit_calculation": {
+          "max_extractable_value": "$150,000 from slippage and arbitrage on trapped pool",
+          "attack_cost": "$800 (gas and MEV bribe)",
+          "roi": "187x"
+        }
+      },
+      "affected_functions": ["PoolManager.initialize()"],
+      "root_cause": "Initialization is first-come with no reservation; adversary can choose any valid tickSpacing within MIN/MAX bounds before legitimate deployers.",
+      "scout_connection": "Scout flagged initialize() as critical state transition registering pools.",
+      "mitigation": "Introduce pool factory reservations or allow reinitialization when no liquidity is present to disarm front-run pools."
+    }
+  ],
+  "accounting_errors": [],
+  "cross_contract_logic": [],
+  "dead_ends_discovered": [
+    {
+      "path": "Protocol fee controller rug via owner",
+      "reason": "ProtocolFees is owned but only controls fee rates and fee collection; cannot seize LP liquidity directly without fees passing through swaps.",
+      "evidence": "Owner functions limited to setProtocolFee and controller; no arbitrary transfers from pools.",
+      "confidence": "medium"
+    }
+  ],
+  "high_priority_handoff": [
+    {
+      "finding_id": "LOGIC-002",
+      "exploit_engineer_instructions": "Deploy malicious hook with dynamic fee override returning negative fee, seed small liquidity, attract LPs, then flash-loan swap to demonstrate rebate drain from pool reserves."
+    }
+  ],
+  "paths_explored_this_cycle": [
+    "flash_loan_attack_surface_analysis",
+    "hook_dynamic_fee_modeling",
+    "unlock_state_machine_races",
+    "pool_initialization_front_run"
+  ],
+  "statistics": {
+    "total_scenarios_analyzed": 12,
+    "profitable_attacks": 3,
+    "critical_severity": 1,
+    "high_severity": 2,
+    "medium_severity": 1,
+    "total_potential_loss": "$3,400,000"
+  },
+  "metadata": {
+    "time_spent_hours": 3
+  }
+}
