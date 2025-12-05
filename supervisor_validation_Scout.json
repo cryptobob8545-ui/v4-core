@@ -1,0 +1,33 @@
+{
+  "agent_validated": "Scout",
+  "attempt_number": 1,
+  "status": "REJECTED",
+  "rejection_reasons": [
+    {
+      "category": "completeness",
+      "severity": "critical",
+      "issue": "100% contract file coverage missing: only 6 contracts listed while metadata claims 18 total.",
+      "location": "contracts_analyzed array",
+      "required_fix": "Enumerate and summarize all contract files in scope (18/18) with purpose, LOC, key variables, and external calls."
+    },
+    {
+      "category": "completeness",
+      "severity": "major",
+      "issue": "Attack surface lacks full public/external function mapping and external call points per contract.",
+      "location": "attack_surface section",
+      "required_fix": "Provide per-contract public/external function inventory and external call dependencies to satisfy attack surface identification requirement."
+    }
+  ],
+  "required_changes": {
+    "critical": [
+      "Achieve 100% contract coverage in contracts_analyzed."
+    ],
+    "major": [
+      "Expand attack surface to list public/external entry points and external call sites."
+    ],
+    "minor": []
+  },
+  "guidance": "Scout output must include architecture, business logic, attack surface, on-chain analysis, deep-dive areas, and full contract coverage. Ensure every contract file is summarized and public-facing attack surface is cataloged.",
+  "resubmission_instructions": "Address critical and major issues above, then resubmit for validation.",
+  "estimated_fix_time_minutes": 40
+}
