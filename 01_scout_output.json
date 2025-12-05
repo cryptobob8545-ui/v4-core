@@ -1,0 +1,130 @@
+{
+  "cycle": 0,
+  "timestamp": "2025-12-05T17:05:54+00:00",
+  "contracts_analyzed": [
+    {
+      "name": "PoolManager.sol",
+      "purpose": "Central pool registry orchestrating initialization, swaps, liquidity changes, and accounting of user deltas with hook extensibility.",
+      "loc": 230,
+      "complexity": "high",
+      "external_calls": ["IHooks.beforeInitialize()", "IHooks.afterInitialize()", "IHooks.beforeModifyLiquidity()", "IHooks.afterModifyLiquidity()", "IHooks.beforeSwap()", "IHooks.afterSwap()", "IHooks.beforeDonate()", "IHooks.afterDonate()", "IUnlockCallback.unlockCallback()", "Currency.transfer()"],
+      "key_state_variables": ["mapping(PoolId => Pool.State) _pools", "MAX_TICK_SPACING", "MIN_TICK_SPACING"],
+      "upgrade_pattern": "none"
+    },
+    {
+      "name": "ProtocolFees.sol",
+      "purpose": "Ownable module tracking and withdrawing protocol fee accrual per currency and setting fee parameters.",
+      "loc": 70,
+      "complexity": "medium",
+      "external_calls": ["Currency.transfer()"],
+      "key_state_variables": ["mapping(Currency => uint256) protocolFeesAccrued", "address protocolFeeController"],
+      "upgrade_pattern": "none"
+    },
+    {
+      "name": "Hooks.sol",
+      "purpose": "Library to validate hook addresses and mediate optional hook callbacks returning swap/liquidity deltas and fee overrides.",
+      "loc": 230,
+      "complexity": "high",
+      "external_calls": ["IHooks.* hook methods via low-level call"],
+      "key_state_variables": ["Hook permission bitmask constants"],
+      "upgrade_pattern": "none"
+    },
+    {
+      "name": "Pool.sol",
+      "purpose": "AMM pool math and state transitions for swaps, liquidity updates, donations, and fee growth accounting.",
+      "loc": 420,
+      "complexity": "critical",
+      "external_calls": [],
+      "key_state_variables": ["Slot0 slot0", "uint256 feeGrowthGlobal0X128", "uint256 feeGrowthGlobal1X128", "uint128 liquidity", "mapping ticks", "mapping tickBitmap", "mapping positions"],
+      "upgrade_pattern": "none"
+    },
+    {
+      "name": "Currency.sol",
+      "purpose": "Wrapper type and helpers for native/erc20 currency operations and conversions to ERC6909 ids.",
+      "loc": 110,
+      "complexity": "medium",
+      "external_calls": ["IERC20Minimal.transfer()", "IERC20Minimal.balanceOf()"],
+      "key_state_variables": ["constant ADDRESS_ZERO"],
+      "upgrade_pattern": "none"
+    },
+    {
+      "name": "ERC6909.sol / ERC6909Claims.sol",
+      "purpose": "Minimal ERC6909 multi-token ledger plus internal burn-from helper used for claim tokens.",
+      "loc": 120,
+      "complexity": "medium",
+      "external_calls": [],
+      "key_state_variables": ["mapping isOperator", "mapping balanceOf", "mapping allowance"],
+      "upgrade_pattern": "none"
+    }
+  ],
+  "architecture": {
+    "protocol_type": "Bridge",
+    "contract_topology": {
+      "core_contracts": ["PoolManager", "ProtocolFees", "Pool"],
+      "periphery_contracts": ["Hooks", "ERC6909Claims", "Extsload", "Exttload", "NoDelegateCall"],
+      "external_dependencies": ["ERC20 tokens", "external hook contracts implementing IHooks", "unlocking caller callbacks"]
+    },
+    "inheritance_chains": {
+      "PoolManager": ["ProtocolFees", "NoDelegateCall", "ERC6909Claims", "Extsload", "Exttload"],
+      "ProtocolFees": ["Owned"]
+    },
+    "admin_controls": {
+      "owner_functions": ["setProtocolFeeController()"],
+      "timelock_delay": "none noted",
+      "multisig_threshold": "not specified"
+    }
+  },
+  "business_logic": {
+    "core_mechanics": "PoolManager coordinates initialization of AMM pools keyed by token pairs, tick spacing, fee, and optional hooks. Users must unlock the manager, perform swaps/liquidity actions/donations during the unlocked window, then settle deltas so the manager can re-lock. Balances are tracked as transient deltas and can be minted/burned to ERC6909 claim tokens or transferred via settle/take calls. Hooks can modify behavior, return additional deltas, or override dynamic LP fees.",
+    "economic_model": {
+      "token_flows": "Callers unlock, interact (modifyLiquidity/swap/donate), accruing BalanceDelta adjustments in transient storage per currency and address. settle/settleFor record incoming funds (native via msg.value or ERC20 via pre-sync) and credit deltas; take withdraws owed amounts; mint/burn convert deltas to ERC6909 claims. Protocol fees are accrued on swaps and can be withdrawn by the controller.",
+      "fee_structure": "Each pool has LP fee (static or dynamic) and protocol fee per direction. Protocol fee controller sets per-pool fees and withdraws accrued protocolFeesAccrued. Swap computes total swapFee combining LP and protocol portions; donations increase feeGrowth for LPs.",
+      "incentive_mechanisms": "LPs earn swap fees and can receive donations; hooks may impose custom incentives.",
+      "collateral_requirements": "Not explicitly collateralized; users must settle owed amounts before relocking."},
+    "critical_state_transitions": [
+      {"trigger": "unlock() called", "state_change": "Lock flag set true and reverted to false after callback", "side_effects": "NonzeroDeltaCount must return to zero or revert before re-locking."},
+      {"trigger": "initialize()", "state_change": "Creates Pool.State with sqrtPrice and lp fee, emits Initialize", "side_effects": "Calls hook before/after initialize; validates currencies order and tick spacing."},
+      {"trigger": "modifyLiquidity()", "state_change": "Updates position liquidity, fee accruals, and pool liquidity", "side_effects": "Hook callbacks before/after may return deltas; caller deltas updated and recorded."},
+      {"trigger": "swap()", "state_change": "Executes AMM swap adjusting price, liquidity, and fee growth", "side_effects": "Protocol fee portion accrued; hook callbacks may adjust amount or deltas."},
+      {"trigger": "settle()/take()/mint()/burn()", "state_change": "Applies transient deltas to actual token movements or ERC6909 mint/burn", "side_effects": "Tracks nonzero delta counts to ensure clean re-locking."}
+    ],
+    "invariants": [
+      "NonzeroDeltaCount must be zero when lock re-engages after unlock callback",
+      "Pool must be initialized (slot0 price set) before swaps/liquidity",
+      "Currency deltas per address sum to zero when all balances settled",
+      "Protocol fee per pool must remain within ProtocolFeeLibrary bounds"
+    ]
+  },
+  "attack_surface": {
+    "high_priority_areas": [
+      {"location": "PoolManager.unlock() / settle()/take()/mint()/burn() sequence", "reason": "Unlock requires external callback and transient accounting; mis-settlement could affect locked state or balances.", "complexity": "high", "external_calls": true, "research_note": "Complex lock/callback patterns often hide settlement/rehypothecation issues."},
+      {"location": "Hook callbacks in swap/modifyLiquidity/donate", "reason": "Hook addresses determine optional external calls that can alter amounts or fees.", "complexity": "high", "external_calls": true, "research_note": "Hook-controlled deltas and fee overrides broaden surface for manipulation."},
+      {"location": "Protocol fee controller operations", "reason": "Controller can set/collect fees impacting pool economics.", "complexity": "medium", "external_calls": false, "research_note": "Admin misconfiguration can redirect fees or lock funds."}
+    ],
+    "oracle_dependencies": [],
+    "flash_loan_exposure": ["swap() and modifyLiquidity() are callable within a single unlock window, enabling same-block capital usage"],
+    "upgrade_risks": ["No proxy pattern; reliance on externally owned owner/controller for fee settings"]
+  },
+  "on_chain_analysis": {
+    "deployment_address": "unknown",
+    "tvl_usd": 0,
+    "admin_addresses": [],
+    "recent_incidents": [],
+    "unusual_patterns": []
+  },
+  "areas_requiring_deep_dive": [
+    {"area": "Swap math and fee distribution in Pool.swap()", "reason": "Complex step-wise price movement and protocol/LP fee split.", "agents_to_investigate": ["Logic Auditor", "Exploit Engineer"]},
+    {"area": "Hook permission masking and delta overrides", "reason": "Bitmask-based gating with external call results affecting balances.", "agents_to_investigate": ["Logic Auditor", "Exploit Engineer"]}
+  ],
+  "paths_explored_this_cycle": ["architecture_mapping", "business_logic_documentation", "attack_surface_identification"],
+  "questions_for_next_agent": [
+    "Can hook-returned deltas flip swap exactness or cause inconsistent settlement?",
+    "Are protocol fee updates bounded correctly when combined with dynamic LP fees?"
+  ],
+  "metadata": {
+    "total_contracts": 18,
+    "total_loc": 3200,
+    "complexity_distribution": {"low": 6, "medium": 7, "high": 4, "critical": 1},
+    "time_spent_hours": 2.5
+  }
+}
