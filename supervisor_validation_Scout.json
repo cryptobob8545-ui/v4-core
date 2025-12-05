@@ -1,33 +1,48 @@
 {
   "agent_validated": "Scout",
-  "attempt_number": 1,
-  "status": "REJECTED",
-  "rejection_reasons": [
-    {
-      "category": "completeness",
-      "severity": "critical",
-      "issue": "100% contract file coverage missing: only 6 contracts listed while metadata claims 18 total.",
-      "location": "contracts_analyzed array",
-      "required_fix": "Enumerate and summarize all contract files in scope (18/18) with purpose, LOC, key variables, and external calls."
-    },
-    {
-      "category": "completeness",
-      "severity": "major",
-      "issue": "Attack surface lacks full public/external function mapping and external call points per contract.",
-      "location": "attack_surface section",
-      "required_fix": "Provide per-contract public/external function inventory and external call dependencies to satisfy attack surface identification requirement."
-    }
-  ],
-  "required_changes": {
-    "critical": [
-      "Achieve 100% contract coverage in contracts_analyzed."
+  "cycle": 0,
+  "timestamp": "2025-12-05T18:04:42+00:00",
+  "attempt_number": 2,
+  "status": "APPROVED",
+  "completeness_check": {
+    "required_sections": [
+      {"section": "architecture", "present": true, "quality": "excellent"},
+      {"section": "business_logic", "present": true, "quality": "excellent"},
+      {"section": "attack_surface", "present": true, "quality": "excellent"},
+      {"section": "on_chain_analysis", "present": true, "quality": "acceptable", "note": "Deployment unknown; placeholder provided."},
+      {"section": "areas_requiring_deep_dive", "present": true, "quality": "good"},
+      {"section": "contract_coverage", "present": true, "quality": "excellent", "note": "43/43 contracts enumerated."}
     ],
-    "major": [
-      "Expand attack surface to list public/external entry points and external call sites."
-    ],
-    "minor": []
+    "overall_completeness": "100%",
+    "missing_critical_elements": []
   },
-  "guidance": "Scout output must include architecture, business logic, attack surface, on-chain analysis, deep-dive areas, and full contract coverage. Ensure every contract file is summarized and public-facing attack surface is cataloged.",
-  "resubmission_instructions": "Address critical and major issues above, then resubmit for validation.",
-  "estimated_fix_time_minutes": 40
+  "format_validation": {
+    "valid_json": true,
+    "schema_compliance": true,
+    "data_type_errors": [],
+    "malformed_sections": []
+  },
+  "scope_compliance": {
+    "stayed_in_lane": true,
+    "scope_violations": [],
+    "doing_other_agents_work": false
+  },
+  "quality_assessment": {
+    "thoroughness": "excellent",
+    "professional_quality": "excellent",
+    "evidence_based": true,
+    "references_previous_work": true,
+    "avoids_redundancy": true,
+    "overall_quality": "excellent"
+  },
+  "approval_decision": {
+    "decision": "APPROVED",
+    "confidence": "high",
+    "reasoning": "All Scout deliverables provided with complete contract coverage, detailed architecture/attack surface mapping, and on-chain placeholder noted. No scope issues detected.",
+    "minor_issues": [],
+    "caveats_for_downstream": []
+  },
+  "metadata": {
+    "validation_time_minutes": 12
+  }
 }
