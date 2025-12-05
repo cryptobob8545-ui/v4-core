@@ -1,0 +1,2682 @@
+{
+  "files_summary": {
+    "total_source_units": 84,
+    "total_sloc": 5127
+  },
+  "files_details": {
+    "files_details": [
+      {
+        "file_path": "src/ERC6909.sol",
+        "n_sloc": 45
+      },
+      {
+        "file_path": "src/ERC6909Claims.sol",
+        "n_sloc": 14
+      },
+      {
+        "file_path": "src/Extsload.sol",
+        "n_sloc": 46
+      },
+      {
+        "file_path": "src/Exttload.sol",
+        "n_sloc": 28
+      },
+      {
+        "file_path": "src/NoDelegateCall.sol",
+        "n_sloc": 17
+      },
+      {
+        "file_path": "src/PoolManager.sol",
+        "n_sloc": 243
+      },
+      {
+        "file_path": "src/ProtocolFees.sol",
+        "n_sloc": 48
+      },
+      {
+        "file_path": "src/interfaces/IExtsload.sol",
+        "n_sloc": 6
+      },
+      {
+        "file_path": "src/interfaces/IExttload.sol",
+        "n_sloc": 5
+      },
+      {
+        "file_path": "src/interfaces/IHooks.sol",
+        "n_sloc": 63
+      },
+      {
+        "file_path": "src/interfaces/IPoolManager.sol",
+        "n_sloc": 67
+      },
+      {
+        "file_path": "src/interfaces/IProtocolFees.sol",
+        "n_sloc": 18
+      },
+      {
+        "file_path": "src/interfaces/callback/IUnlockCallback.sol",
+        "n_sloc": 4
+      },
+      {
+        "file_path": "src/interfaces/external/IERC20Minimal.sol",
+        "n_sloc": 10
+      },
+      {
+        "file_path": "src/interfaces/external/IERC6909Claims.sol",
+        "n_sloc": 13
+      },
+      {
+        "file_path": "src/libraries/BitMath.sol",
+        "n_sloc": 26
+      },
+      {
+        "file_path": "src/libraries/CurrencyDelta.sol",
+        "n_sloc": 30
+      },
+      {
+        "file_path": "src/libraries/CurrencyReserves.sol",
+        "n_sloc": 29
+      },
+      {
+        "file_path": "src/libraries/CustomRevert.sol",
+        "n_sloc": 85
+      },
+      {
+        "file_path": "src/libraries/FixedPoint128.sol",
+        "n_sloc": 4
+      },
+      {
+        "file_path": "src/libraries/FixedPoint96.sol",
+        "n_sloc": 5
+      },
+      {
+        "file_path": "src/libraries/FullMath.sol",
+        "n_sloc": 56
+      },
+      {
+        "file_path": "src/libraries/Hooks.sol",
+        "n_sloc": 246
+      },
+      {
+        "file_path": "src/libraries/LPFeeLibrary.sol",
+        "n_sloc": 35
+      },
+      {
+        "file_path": "src/libraries/LiquidityMath.sol",
+        "n_sloc": 12
+      },
+      {
+        "file_path": "src/libraries/Lock.sol",
+        "n_sloc": 19
+      },
+      {
+        "file_path": "src/libraries/NonzeroDeltaCount.sol",
+        "n_sloc": 24
+      },
+      {
+        "file_path": "src/libraries/ParseBytes.sol",
+        "n_sloc": 18
+      },
+      {
+        "file_path": "src/libraries/Pool.sol",
+        "n_sloc": 393
+      },
+      {
+        "file_path": "src/libraries/Position.sol",
+        "n_sloc": 60
+      },
+      {
+        "file_path": "src/libraries/ProtocolFeeLibrary.sol",
+        "n_sloc": 28
+      },
+      {
+        "file_path": "src/libraries/SafeCast.sol",
+        "n_sloc": 30
+      },
+      {
+        "file_path": "src/libraries/SqrtPriceMath.sol",
+        "n_sloc": 177
+      },
+      {
+        "file_path": "src/libraries/StateLibrary.sol",
+        "n_sloc": 167
+      },
+      {
+        "file_path": "src/libraries/SwapMath.sol",
+        "n_sloc": 69
+      },
+      {
+        "file_path": "src/libraries/TickBitmap.sol",
+        "n_sloc": 67
+      },
+      {
+        "file_path": "src/libraries/TickMath.sol",
+        "n_sloc": 164
+      },
+      {
+        "file_path": "src/libraries/TransientStateLibrary.sol",
+        "n_sloc": 30
+      },
+      {
+        "file_path": "src/libraries/UnsafeMath.sol",
+        "n_sloc": 13
+      },
+      {
+        "file_path": "src/test/ActionsRouter.sol",
+        "n_sloc": 135
+      },
+      {
+        "file_path": "src/test/BaseTestHooks.sol",
+        "n_sloc": 96
+      },
+      {
+        "file_path": "src/test/CurrencyTest.sol",
+        "n_sloc": 22
+      },
+      {
+        "file_path": "src/test/CustomCurveHook.sol",
+        "n_sloc": 55
+      },
+      {
+        "file_path": "src/test/DeltaReturningHook.sol",
+        "n_sloc": 80
+      },
+      {
+        "file_path": "src/test/DynamicFeesTestHook.sol",
+        "n_sloc": 32
+      },
+      {
+        "file_path": "src/test/DynamicReturnFeeTestHook.sol",
+        "n_sloc": 30
+      },
+      {
+        "file_path": "src/test/EmptyRevertContract.sol",
+        "n_sloc": 6
+      },
+      {
+        "file_path": "src/test/EmptyTestHooks.sol",
+        "n_sloc": 105
+      },
+      {
+        "file_path": "src/test/FeeTakingHook.sol",
+        "n_sloc": 71
+      },
+      {
+        "file_path": "src/test/Fuzzers.sol",
+        "n_sloc": 141
+      },
+      {
+        "file_path": "src/test/HooksTest.sol",
+        "n_sloc": 56
+      },
+      {
+        "file_path": "src/test/LPFeeTakingHook.sol",
+        "n_sloc": 51
+      },
+      {
+        "file_path": "src/test/LiquidityMathTest.sol",
+        "n_sloc": 7
+      },
+      {
+        "file_path": "src/test/MockContract.sol",
+        "n_sloc": 38
+      },
+      {
+        "file_path": "src/test/MockERC6909Claims.sol",
+        "n_sloc": 13
+      },
+      {
+        "file_path": "src/test/MockHooks.sol",
+        "n_sloc": 122
+      },
+      {
+        "file_path": "src/test/NativeERC20.sol",
+        "n_sloc": 35
+      },
+      {
+        "file_path": "src/test/NoDelegateCallTest.sol",
+        "n_sloc": 24
+      },
+      {
+        "file_path": "src/test/PoolClaimsTest.sol",
+        "n_sloc": 37
+      },
+      {
+        "file_path": "src/test/PoolDonateTest.sol",
+        "n_sloc": 52
+      },
+      {
+        "file_path": "src/test/PoolEmptyUnlockTest.sol",
+        "n_sloc": 17
+      },
+      {
+        "file_path": "src/test/PoolModifyLiquidityTest.sol",
+        "n_sloc": 78
+      },
+      {
+        "file_path": "src/test/PoolModifyLiquidityTestNoChecks.sol",
+        "n_sloc": 60
+      },
+      {
+        "file_path": "src/test/PoolNestedActionsTest.sol",
+        "n_sloc": 191
+      },
+      {
+        "file_path": "src/test/PoolSwapTest.sol",
+        "n_sloc": 95
+      },
+      {
+        "file_path": "src/test/PoolTakeTest.sol",
+        "n_sloc": 45
+      },
+      {
+        "file_path": "src/test/PoolTestBase.sol",
+        "n_sloc": 23
+      },
+      {
+        "file_path": "src/test/ProtocolFeesImplementation.sol",
+        "n_sloc": 28
+      },
+      {
+        "file_path": "src/test/ProxyPoolManager.sol",
+        "n_sloc": 157
+      },
+      {
+        "file_path": "src/test/SkipCallsTestHook.sol",
+        "n_sloc": 166
+      },
+      {
+        "file_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+        "n_sloc": 159
+      },
+      {
+        "file_path": "src/test/SwapRouterNoChecks.sol",
+        "n_sloc": 37
+      },
+      {
+        "file_path": "src/test/TestERC20.sol",
+        "n_sloc": 42
+      },
+      {
+        "file_path": "src/test/TestInvalidERC20.sol",
+        "n_sloc": 42
+      },
+      {
+        "file_path": "src/test/TickMathEchidnaTest.sol",
+        "n_sloc": 16
+      },
+      {
+        "file_path": "src/test/TickMathTest.sol",
+        "n_sloc": 32
+      },
+      {
+        "file_path": "src/test/TickOverflowSafetyEchidnaTest.sol",
+        "n_sloc": 70
+      },
+      {
+        "file_path": "src/types/BalanceDelta.sol",
+        "n_sloc": 56
+      },
+      {
+        "file_path": "src/types/BeforeSwapDelta.sol",
+        "n_sloc": 23
+      },
+      {
+        "file_path": "src/types/Currency.sol",
+        "n_sloc": 77
+      },
+      {
+        "file_path": "src/types/PoolId.sol",
+        "n_sloc": 10
+      },
+      {
+        "file_path": "src/types/PoolKey.sol",
+        "n_sloc": 12
+      },
+      {
+        "file_path": "src/types/PoolOperation.sol",
+        "n_sloc": 14
+      },
+      {
+        "file_path": "src/types/Slot0.sol",
+        "n_sloc": 55
+      }
+    ]
+  },
+  "issue_count": {
+    "high": 7,
+    "low": 20
+  },
+  "high_issues": {
+    "issues": [
+      {
+        "title": "Unprotected initializer",
+        "description": "Consider protecting the initializer functions with modifiers.",
+        "detector_name": "unprotected-initializer",
+        "instances": [
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 135,
+            "src": "4459:11",
+            "src_char": "4459:11"
+          }
+        ]
+      },
+      {
+        "title": "Unsafe Casting of integers",
+        "description": "Downcasting int/uints in Solidity can be unsafe due to the potential for data loss and unintended behavior.When downcasting a larger integer type to a smaller one (e.g., uint256 to uint128), the value may exceed the range of the target type,leading to truncation and loss of significant digits. Use OpenZeppelin's SafeCast library to safely downcast integers.",
+        "detector_name": "unsafe-casting",
+        "instances": [
+          {
+            "contract_path": "src/test/Fuzzers.sol",
+            "line_no": 128,
+            "src": "5539:17",
+            "src_char": "5539:17"
+          },
+          {
+            "contract_path": "src/types/Currency.sol",
+            "line_no": 117,
+            "src": "5435:11",
+            "src_char": "5435:11"
+          }
+        ]
+      },
+      {
+        "title": "Incorrect Assembly Shift Parameter Order",
+        "description": "Example: `shl(shifted, 4)` will shift the right constant `4` by `a` bits. The correct order is `shl(4, shifted)`.",
+        "detector_name": "incorrect-shift-order",
+        "instances": [
+          {
+            "contract_path": "src/libraries/BitMath.sol",
+            "line_no": 22,
+            "src": "1164:50",
+            "src_char": "1164:50"
+          },
+          {
+            "contract_path": "src/libraries/BitMath.sol",
+            "line_no": 40,
+            "src": "2121:197",
+            "src_char": "2121:197"
+          },
+          {
+            "contract_path": "src/libraries/Pool.sol",
+            "line_no": 580,
+            "src": "28476:11",
+            "src_char": "28474:11"
+          },
+          {
+            "contract_path": "src/libraries/TickBitmap.sol",
+            "line_no": 73,
+            "src": "3477:23",
+            "src_char": "3477:23"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 80,
+            "src": "4439:11",
+            "src_char": "4439:11"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 80,
+            "src": "4460:11",
+            "src_char": "4460:11"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 111,
+            "src": "7121:10",
+            "src_char": "7121:10"
+          },
+          {
+            "contract_path": "src/types/BalanceDelta.sol",
+            "line_no": 16,
+            "src": "635:11",
+            "src_char": "635:11"
+          },
+          {
+            "contract_path": "src/types/BeforeSwapDelta.sol",
+            "line_no": 14,
+            "src": "544:11",
+            "src_char": "544:11"
+          }
+        ]
+      },
+      {
+        "title": "Incorrect use of caret operator",
+        "description": "The caret operator is usually mistakenly thought of as an exponentiation operator but actually, it's a bitwise xor operator.",
+        "detector_name": "incorrect-caret-operator",
+        "instances": [
+          {
+            "contract_path": "src/libraries/FullMath.sol",
+            "line_no": 82,
+            "src": "3756:21",
+            "src_char": "3754:21"
+          }
+        ]
+      },
+      {
+        "title": "Yul block contains `return`",
+        "description": "This causes the transaction execution to halt, and nothing after that call will execute including code following the assembly block.",
+        "detector_name": "yul-return",
+        "instances": [
+          {
+            "contract_path": "src/Extsload.sol",
+            "line_no": 13,
+            "src": "485:15",
+            "src_char": "485:15"
+          },
+          {
+            "contract_path": "src/Extsload.sol",
+            "line_no": 37,
+            "src": "1487:30",
+            "src_char": "1487:30"
+          },
+          {
+            "contract_path": "src/Extsload.sol",
+            "line_no": 61,
+            "src": "2560:30",
+            "src_char": "2560:30"
+          },
+          {
+            "contract_path": "src/Exttload.sol",
+            "line_no": 13,
+            "src": "496:15",
+            "src_char": "496:15"
+          },
+          {
+            "contract_path": "src/Exttload.sol",
+            "line_no": 37,
+            "src": "1554:30",
+            "src_char": "1554:30"
+          }
+        ]
+      },
+      {
+        "title": "`delegatecall` to an Arbitrary Address",
+        "description": "Making a `delegatecall` to an arbitrary address without any checks is dangerous. Consider adding requirements on the target address.",
+        "detector_name": "delegate-call-unchecked-address",
+        "instances": [
+          {
+            "contract_path": "src/test/ProxyPoolManager.sol",
+            "line_no": 171,
+            "src": "7078:5",
+            "src_char": "7078:5"
+          }
+        ]
+      },
+      {
+        "title": "Contract locks Ether without a withdraw function",
+        "description": "It appears that the contract includes a payable function to accept Ether but lacks a corresponding function to withdraw it, which leads to the Ether being locked in the contract. To resolve this issue, please implement a public or external function that allows for the withdrawal of Ether from the contract.",
+        "detector_name": "contract-locks-ether",
+        "instances": [
+          {
+            "contract_path": "src/PoolManager.sol",
+            "line_no": 80,
+            "src": "4800:11",
+            "src_char": "4800:11"
+          },
+          {
+            "contract_path": "src/test/ActionsRouter.sol",
+            "line_no": 37,
+            "src": "1019:13",
+            "src_char": "1019:13"
+          },
+          {
+            "contract_path": "src/test/MockContract.sol",
+            "line_no": 9,
+            "src": "335:12",
+            "src_char": "335:12"
+          },
+          {
+            "contract_path": "src/test/PoolClaimsTest.sol",
+            "line_no": 11,
+            "src": "411:14",
+            "src_char": "411:14"
+          },
+          {
+            "contract_path": "src/test/PoolDonateTest.sol",
+            "line_no": 13,
+            "src": "517:14",
+            "src_char": "517:14"
+          },
+          {
+            "contract_path": "src/test/PoolModifyLiquidityTest.sol",
+            "line_no": 16,
+            "src": "703:23",
+            "src_char": "703:23"
+          },
+          {
+            "contract_path": "src/test/PoolModifyLiquidityTestNoChecks.sol",
+            "line_no": 15,
+            "src": "643:31",
+            "src_char": "643:31"
+          },
+          {
+            "contract_path": "src/test/PoolSwapTest.sol",
+            "line_no": 14,
+            "src": "572:12",
+            "src_char": "572:12"
+          },
+          {
+            "contract_path": "src/test/PoolTakeTest.sol",
+            "line_no": 11,
+            "src": "401:12",
+            "src_char": "401:12"
+          },
+          {
+            "contract_path": "src/test/ProxyPoolManager.sol",
+            "line_no": 30,
+            "src": "1469:16",
+            "src_char": "1469:16"
+          },
+          {
+            "contract_path": "src/test/SwapRouterNoChecks.sol",
+            "line_no": 14,
+            "src": "555:18",
+            "src_char": "555:18"
+          }
+        ]
+      }
+    ]
+  },
+  "low_issues": {
+    "issues": [
+      {
+        "title": "Centralization Risk",
+        "description": "Contracts have owners with privileged rights to perform admin tasks and need to be trusted to not perform malicious updates or drain funds.",
+        "detector_name": "centralization-risk",
+        "instances": [
+          {
+            "contract_path": "src/ProtocolFees.sol",
+            "line_no": 15,
+            "src": "665:5",
+            "src_char": "665:5"
+          },
+          {
+            "contract_path": "src/ProtocolFees.sol",
+            "line_no": 29,
+            "src": "1133:9",
+            "src_char": "1133:9"
+          }
+        ]
+      },
+      {
+        "title": "Unsafe ERC20 Operation",
+        "description": "ERC20 functions may not behave as expected. For example: return values are not always meaningful. It is recommended to use OpenZeppelin's SafeERC20 library.",
+        "detector_name": "unsafe-erc20-operation",
+        "instances": [
+          {
+            "contract_path": "src/PoolManager.sol",
+            "line_no": 295,
+            "src": "13543:17",
+            "src_char": "13543:17"
+          },
+          {
+            "contract_path": "src/ProtocolFees.sol",
+            "line_no": 56,
+            "src": "2392:17",
+            "src_char": "2392:17"
+          },
+          {
+            "contract_path": "src/test/ActionsRouter.sol",
+            "line_no": 163,
+            "src": "6275:49",
+            "src_char": "6275:49"
+          },
+          {
+            "contract_path": "src/test/CurrencyTest.sol",
+            "line_no": 8,
+            "src": "243:17",
+            "src_char": "243:17"
+          },
+          {
+            "contract_path": "src/test/PoolDonateTest.sol",
+            "line_no": 38,
+            "src": "1258:37",
+            "src_char": "1258:37"
+          },
+          {
+            "contract_path": "src/test/PoolModifyLiquidityTest.sol",
+            "line_no": 55,
+            "src": "1932:37",
+            "src_char": "1932:37"
+          },
+          {
+            "contract_path": "src/test/PoolModifyLiquidityTestNoChecks.sol",
+            "line_no": 53,
+            "src": "1839:37",
+            "src_char": "1839:37"
+          },
+          {
+            "contract_path": "src/test/PoolSwapTest.sol",
+            "line_no": 45,
+            "src": "1454:37",
+            "src_char": "1454:37"
+          },
+          {
+            "contract_path": "src/types/Currency.sol",
+            "line_no": 84,
+            "src": "4235:22",
+            "src_char": "4235:22"
+          }
+        ]
+      },
+      {
+        "title": "Unspecific Solidity Pragma",
+        "description": "Consider using a specific version of Solidity in your contracts instead of a wide version. For example, instead of `pragma solidity ^0.8.0;`, use `pragma solidity 0.8.0;`",
+        "detector_name": "unspecific-solidity-pragma",
+        "instances": [
+          {
+            "contract_path": "src/ERC6909.sol",
+            "line_no": 2,
+            "src": "32:23",
+            "src_char": "32:23"
+          },
+          {
+            "contract_path": "src/ERC6909Claims.sol",
+            "line_no": 2,
+            "src": "32:23",
+            "src_char": "32:23"
+          },
+          {
+            "contract_path": "src/Extsload.sol",
+            "line_no": 2,
+            "src": "32:23",
+            "src_char": "32:23"
+          },
+          {
+            "contract_path": "src/Exttload.sol",
+            "line_no": 2,
+            "src": "32:24",
+            "src_char": "32:24"
+          },
+          {
+            "contract_path": "src/NoDelegateCall.sol",
+            "line_no": 2,
+            "src": "32:23",
+            "src_char": "32:23"
+          },
+          {
+            "contract_path": "src/ProtocolFees.sol",
+            "line_no": 2,
+            "src": "32:23",
+            "src_char": "32:23"
+          },
+          {
+            "contract_path": "src/interfaces/IExtsload.sol",
+            "line_no": 2,
+            "src": "32:23",
+            "src_char": "32:23"
+          },
+          {
+            "contract_path": "src/interfaces/IExttload.sol",
+            "line_no": 2,
+            "src": "32:24",
+            "src_char": "32:24"
+          },
+          {
+            "contract_path": "src/interfaces/IHooks.sol",
+            "line_no": 2,
+            "src": "32:23",
+            "src_char": "32:23"
+          },
+          {
+            "contract_path": "src/interfaces/IPoolManager.sol",
+            "line_no": 2,
+            "src": "32:24",
+            "src_char": "32:24"
+          },
+          {
+            "contract_path": "src/interfaces/IProtocolFees.sol",
+            "line_no": 2,
+            "src": "32:23",
+            "src_char": "32:23"
+          },
+          {
+            "contract_path": "src/interfaces/callback/IUnlockCallback.sol",
+            "line_no": 2,
+            "src": "32:23",
+            "src_char": "32:23"
+          },
+          {
+            "contract_path": "src/interfaces/external/IERC20Minimal.sol",
+            "line_no": 2,
+            "src": "32:23",
+            "src_char": "32:23"
+          },
+          {
+            "contract_path": "src/interfaces/external/IERC6909Claims.sol",
+            "line_no": 2,
+            "src": "32:23",
+            "src_char": "32:23"
+          },
+          {
+            "contract_path": "src/test/ActionsRouter.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/BaseTestHooks.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/CurrencyTest.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/CustomCurveHook.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/DeltaReturningHook.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/DynamicFeesTestHook.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/DynamicReturnFeeTestHook.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/EmptyRevertContract.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/EmptyTestHooks.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/FeeTakingHook.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/Fuzzers.sol",
+            "line_no": 2,
+            "src": "32:24",
+            "src_char": "32:24"
+          },
+          {
+            "contract_path": "src/test/HooksTest.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/LPFeeTakingHook.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/LiquidityMathTest.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/MockContract.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/MockERC6909Claims.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/MockHooks.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/NativeERC20.sol",
+            "line_no": 2,
+            "src": "45:23",
+            "src_char": "45:23"
+          },
+          {
+            "contract_path": "src/test/NoDelegateCallTest.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/PoolClaimsTest.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/PoolDonateTest.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/PoolEmptyUnlockTest.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/PoolModifyLiquidityTest.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/PoolModifyLiquidityTestNoChecks.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/PoolNestedActionsTest.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/PoolSwapTest.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/PoolTakeTest.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/PoolTestBase.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/ProtocolFeesImplementation.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/ProxyPoolManager.sol",
+            "line_no": 2,
+            "src": "37:24",
+            "src_char": "37:24"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/SwapRouterNoChecks.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/TestERC20.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/TestInvalidERC20.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/TickMathEchidnaTest.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/TickMathTest.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/test/TickOverflowSafetyEchidnaTest.sol",
+            "line_no": 2,
+            "src": "39:24",
+            "src_char": "39:24"
+          },
+          {
+            "contract_path": "src/types/PoolKey.sol",
+            "line_no": 2,
+            "src": "32:23",
+            "src_char": "32:23"
+          },
+          {
+            "contract_path": "src/types/PoolOperation.sol",
+            "line_no": 2,
+            "src": "32:24",
+            "src_char": "32:24"
+          }
+        ]
+      },
+      {
+        "title": "Address State Variable Set Without Checks",
+        "description": "Check for `address(0)` when assigning values to address state variables.",
+        "detector_name": "state-no-address-check",
+        "instances": [
+          {
+            "contract_path": "src/ProtocolFees.sol",
+            "line_no": 30,
+            "src": "1153:34",
+            "src_char": "1153:34"
+          },
+          {
+            "contract_path": "src/test/ActionsRouter.sol",
+            "line_no": 49,
+            "src": "1367:18",
+            "src_char": "1367:18"
+          },
+          {
+            "contract_path": "src/test/DynamicFeesTestHook.sol",
+            "line_no": 16,
+            "src": "580:18",
+            "src_char": "580:18"
+          },
+          {
+            "contract_path": "src/test/DynamicReturnFeeTestHook.sol",
+            "line_no": 19,
+            "src": "681:18",
+            "src_char": "681:18"
+          },
+          {
+            "contract_path": "src/test/MockContract.sol",
+            "line_no": 40,
+            "src": "1621:12",
+            "src_char": "1621:12"
+          },
+          {
+            "contract_path": "src/test/PoolEmptyUnlockTest.sol",
+            "line_no": 13,
+            "src": "358:18",
+            "src_char": "358:18"
+          },
+          {
+            "contract_path": "src/test/PoolNestedActionsTest.sol",
+            "line_no": 37,
+            "src": "1308:18",
+            "src_char": "1308:18"
+          },
+          {
+            "contract_path": "src/test/PoolNestedActionsTest.sol",
+            "line_no": 90,
+            "src": "3174:12",
+            "src_char": "3174:12"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 28,
+            "src": "1190:18",
+            "src_char": "1190:18"
+          }
+        ]
+      },
+      {
+        "title": "Public Function Not Used Internally",
+        "description": "If a function is marked public but is not used internally, consider marking it as `external`.",
+        "detector_name": "unused-public-function",
+        "instances": [
+          {
+            "contract_path": "src/test/MockContract.sol",
+            "line_no": 16,
+            "src": "591:19",
+            "src_char": "591:19"
+          },
+          {
+            "contract_path": "src/test/MockContract.sol",
+            "line_no": 20,
+            "src": "713:11",
+            "src_char": "713:11"
+          },
+          {
+            "contract_path": "src/test/MockContract.sol",
+            "line_no": 25,
+            "src": "931:18",
+            "src_char": "931:18"
+          },
+          {
+            "contract_path": "src/test/MockContract.sol",
+            "line_no": 29,
+            "src": "1123:10",
+            "src_char": "1123:10"
+          },
+          {
+            "contract_path": "src/test/MockERC6909Claims.sol",
+            "line_no": 9,
+            "src": "263:4",
+            "src_char": "263:4"
+          },
+          {
+            "contract_path": "src/test/MockERC6909Claims.sol",
+            "line_no": 14,
+            "src": "402:4",
+            "src_char": "402:4"
+          },
+          {
+            "contract_path": "src/test/MockERC6909Claims.sol",
+            "line_no": 19,
+            "src": "571:8",
+            "src_char": "571:8"
+          },
+          {
+            "contract_path": "src/test/NativeERC20.sol",
+            "line_no": 17,
+            "src": "661:11",
+            "src_char": "661:11"
+          },
+          {
+            "contract_path": "src/test/NativeERC20.sol",
+            "line_no": 21,
+            "src": "765:7",
+            "src_char": "765:7"
+          },
+          {
+            "contract_path": "src/test/NativeERC20.sol",
+            "line_no": 27,
+            "src": "951:8",
+            "src_char": "951:8"
+          },
+          {
+            "contract_path": "src/test/PoolNestedActionsTest.sol",
+            "line_no": 97,
+            "src": "3287:7",
+            "src_char": "3287:7"
+          },
+          {
+            "contract_path": "src/test/ProtocolFeesImplementation.sol",
+            "line_no": 18,
+            "src": "668:8",
+            "src_char": "668:8"
+          },
+          {
+            "contract_path": "src/test/ProtocolFeesImplementation.sol",
+            "line_no": 27,
+            "src": "988:13",
+            "src_char": "988:13"
+          },
+          {
+            "contract_path": "src/test/ProtocolFeesImplementation.sol",
+            "line_no": 35,
+            "src": "1178:18",
+            "src_char": "1178:18"
+          },
+          {
+            "contract_path": "src/test/ProxyPoolManager.sol",
+            "line_no": 139,
+            "src": "5703:4",
+            "src_char": "5703:4"
+          }
+        ]
+      },
+      {
+        "title": "Literal Instead of Constant",
+        "description": "Define and use `constant` variables instead of using literals. If the same constant literal value is used multiple times, create a constant state variable and reference it throughout the contract.",
+        "detector_name": "literal-instead-of-constant",
+        "instances": [
+          {
+            "contract_path": "src/libraries/StateLibrary.sol",
+            "line_no": 89,
+            "src": "3808:1",
+            "src_char": "3808:1"
+          },
+          {
+            "contract_path": "src/libraries/StateLibrary.sol",
+            "line_no": 262,
+            "src": "11822:1",
+            "src_char": "11822:1"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 82,
+            "src": "4636:3",
+            "src_char": "4636:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 83,
+            "src": "4733:3",
+            "src_char": "4733:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 84,
+            "src": "4830:3",
+            "src_char": "4830:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 85,
+            "src": "4928:3",
+            "src_char": "4928:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 86,
+            "src": "5026:3",
+            "src_char": "5026:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 87,
+            "src": "5124:3",
+            "src_char": "5124:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 88,
+            "src": "5222:3",
+            "src_char": "5222:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 89,
+            "src": "5321:3",
+            "src_char": "5321:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 90,
+            "src": "5420:3",
+            "src_char": "5420:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 91,
+            "src": "5519:3",
+            "src_char": "5519:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 92,
+            "src": "5618:3",
+            "src_char": "5618:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 93,
+            "src": "5718:3",
+            "src_char": "5718:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 94,
+            "src": "5818:3",
+            "src_char": "5818:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 95,
+            "src": "5918:3",
+            "src_char": "5918:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 96,
+            "src": "6018:3",
+            "src_char": "6018:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 97,
+            "src": "6118:3",
+            "src_char": "6118:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 98,
+            "src": "6217:3",
+            "src_char": "6217:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 99,
+            "src": "6314:3",
+            "src_char": "6314:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 100,
+            "src": "6406:3",
+            "src_char": "6406:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 136,
+            "src": "8518:3",
+            "src_char": "8518:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 136,
+            "src": "8543:3",
+            "src_char": "8543:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 137,
+            "src": "8580:3",
+            "src_char": "8580:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 139,
+            "src": "8635:3",
+            "src_char": "8635:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 228,
+            "src": "11846:3",
+            "src_char": "11846:3"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 233,
+            "src": "12245:3",
+            "src_char": "12245:3"
+          },
+          {
+            "contract_path": "src/test/MockContract.sol",
+            "line_no": 21,
+            "src": "872:3",
+            "src_char": "872:3"
+          },
+          {
+            "contract_path": "src/test/MockContract.sol",
+            "line_no": 30,
+            "src": "1301:3",
+            "src_char": "1301:3"
+          },
+          {
+            "contract_path": "src/test/MockContract.sol",
+            "line_no": 45,
+            "src": "1772:1",
+            "src_char": "1772:1"
+          },
+          {
+            "contract_path": "src/test/MockContract.sol",
+            "line_no": 46,
+            "src": "1816:1",
+            "src_char": "1816:1"
+          },
+          {
+            "contract_path": "src/test/MockHooks.sol",
+            "line_no": 32,
+            "src": "1235:3",
+            "src_char": "1235:3"
+          },
+          {
+            "contract_path": "src/test/MockHooks.sol",
+            "line_no": 38,
+            "src": "1548:3",
+            "src_char": "1548:3"
+          },
+          {
+            "contract_path": "src/test/NoDelegateCallTest.sol",
+            "line_no": 8,
+            "src": "268:1",
+            "src_char": "268:1"
+          },
+          {
+            "contract_path": "src/test/NoDelegateCallTest.sol",
+            "line_no": 12,
+            "src": "396:1",
+            "src_char": "396:1"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 170,
+            "src": "6243:3",
+            "src_char": "6243:3"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 170,
+            "src": "6259:3",
+            "src_char": "6259:3"
+          }
+        ]
+      },
+      {
+        "title": "Empty `require()` / `revert()` Statement",
+        "description": "Use descriptive reason strings or custom errors for revert paths.",
+        "detector_name": "empty-require-revert",
+        "instances": [
+          {
+            "contract_path": "src/libraries/BitMath.sol",
+            "line_no": 13,
+            "src": "734:7",
+            "src_char": "734:7"
+          },
+          {
+            "contract_path": "src/libraries/BitMath.sol",
+            "line_no": 32,
+            "src": "1741:7",
+            "src_char": "1741:7"
+          },
+          {
+            "contract_path": "src/libraries/FullMath.sol",
+            "line_no": 30,
+            "src": "1611:7",
+            "src_char": "1609:7"
+          },
+          {
+            "contract_path": "src/libraries/FullMath.sol",
+            "line_no": 113,
+            "src": "5408:7",
+            "src_char": "5404:7"
+          },
+          {
+            "contract_path": "src/test/CustomCurveHook.sol",
+            "line_no": 29,
+            "src": "1006:7",
+            "src_char": "1006:7"
+          },
+          {
+            "contract_path": "src/test/DeltaReturningHook.sol",
+            "line_no": 31,
+            "src": "1052:7",
+            "src_char": "1052:7"
+          },
+          {
+            "contract_path": "src/test/EmptyRevertContract.sol",
+            "line_no": 7,
+            "src": "228:6",
+            "src_char": "228:6"
+          },
+          {
+            "contract_path": "src/test/FeeTakingHook.sol",
+            "line_no": 26,
+            "src": "857:7",
+            "src_char": "857:7"
+          },
+          {
+            "contract_path": "src/test/LPFeeTakingHook.sol",
+            "line_no": 28,
+            "src": "976:7",
+            "src_char": "976:7"
+          },
+          {
+            "contract_path": "src/test/NativeERC20.sol",
+            "line_no": 32,
+            "src": "1165:7",
+            "src_char": "1165:7"
+          },
+          {
+            "contract_path": "src/test/PoolClaimsTest.sol",
+            "line_no": 36,
+            "src": "1307:7",
+            "src_char": "1307:7"
+          },
+          {
+            "contract_path": "src/test/PoolDonateTest.sol",
+            "line_no": 43,
+            "src": "1432:7",
+            "src_char": "1432:7"
+          },
+          {
+            "contract_path": "src/test/PoolModifyLiquidityTest.sol",
+            "line_no": 60,
+            "src": "2106:7",
+            "src_char": "2106:7"
+          },
+          {
+            "contract_path": "src/test/PoolModifyLiquidityTestNoChecks.sol",
+            "line_no": 58,
+            "src": "2013:7",
+            "src_char": "2013:7"
+          },
+          {
+            "contract_path": "src/test/PoolSwapTest.sol",
+            "line_no": 49,
+            "src": "1618:7",
+            "src_char": "1618:7"
+          },
+          {
+            "contract_path": "src/test/PoolTakeTest.sol",
+            "line_no": 29,
+            "src": "976:7",
+            "src_char": "976:7"
+          },
+          {
+            "contract_path": "src/test/ProxyPoolManager.sol",
+            "line_no": 201,
+            "src": "8480:6",
+            "src_char": "8480:6"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 11,
+            "src": "397:7",
+            "src_char": "397:7"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 61,
+            "src": "2274:7",
+            "src_char": "2274:7"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 62,
+            "src": "2305:7",
+            "src_char": "2305:7"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 82,
+            "src": "2849:7",
+            "src_char": "2849:7"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 83,
+            "src": "2880:7",
+            "src_char": "2880:7"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 98,
+            "src": "3350:7",
+            "src_char": "3350:7"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 114,
+            "src": "4145:7",
+            "src_char": "4145:7"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 115,
+            "src": "4178:7",
+            "src_char": "4178:7"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 116,
+            "src": "4219:7",
+            "src_char": "4219:7"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 131,
+            "src": "4876:7",
+            "src_char": "4876:7"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 145,
+            "src": "5517:7",
+            "src_char": "5517:7"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 157,
+            "src": "5986:7",
+            "src_char": "5986:7"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 169,
+            "src": "6451:7",
+            "src_char": "6451:7"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 170,
+            "src": "6492:7",
+            "src_char": "6492:7"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 188,
+            "src": "7037:7",
+            "src_char": "7037:7"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 189,
+            "src": "7069:7",
+            "src_char": "7069:7"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 190,
+            "src": "7109:7",
+            "src_char": "7109:7"
+          },
+          {
+            "contract_path": "src/test/SqrtPriceMathEchidnaTest.sol",
+            "line_no": 191,
+            "src": "7180:7",
+            "src_char": "7180:7"
+          },
+          {
+            "contract_path": "src/test/SwapRouterNoChecks.sol",
+            "line_no": 33,
+            "src": "1120:7",
+            "src_char": "1120:7"
+          },
+          {
+            "contract_path": "src/test/TickOverflowSafetyEchidnaTest.sol",
+            "line_no": 26,
+            "src": "846:7",
+            "src_char": "846:7"
+          },
+          {
+            "contract_path": "src/test/TickOverflowSafetyEchidnaTest.sol",
+            "line_no": 32,
+            "src": "1087:7",
+            "src_char": "1087:7"
+          },
+          {
+            "contract_path": "src/test/TickOverflowSafetyEchidnaTest.sol",
+            "line_no": 38,
+            "src": "1352:7",
+            "src_char": "1352:7"
+          },
+          {
+            "contract_path": "src/test/TickOverflowSafetyEchidnaTest.sol",
+            "line_no": 39,
+            "src": "1391:7",
+            "src_char": "1391:7"
+          },
+          {
+            "contract_path": "src/test/TickOverflowSafetyEchidnaTest.sol",
+            "line_no": 40,
+            "src": "1430:7",
+            "src_char": "1430:7"
+          },
+          {
+            "contract_path": "src/test/TickOverflowSafetyEchidnaTest.sol",
+            "line_no": 73,
+            "src": "2498:7",
+            "src_char": "2498:7"
+          },
+          {
+            "contract_path": "src/test/TickOverflowSafetyEchidnaTest.sol",
+            "line_no": 74,
+            "src": "2534:7",
+            "src_char": "2534:7"
+          }
+        ]
+      },
+      {
+        "title": "Empty Block",
+        "description": "Consider removing empty blocks.",
+        "detector_name": "empty-block",
+        "instances": [
+          {
+            "contract_path": "src/test/NoDelegateCallTest.sol",
+            "line_no": 31,
+            "src": "920:21",
+            "src_char": "920:21"
+          }
+        ]
+      },
+      {
+        "title": "Large Numeric Literal",
+        "description": "Large literal values multiples of 10000 can be replaced with scientific notation.Use `e` notation, for example: `1e18`, instead of its full numeric value.",
+        "detector_name": "large-numeric-literal",
+        "instances": [
+          {
+            "contract_path": "src/libraries/LPFeeLibrary.sol",
+            "line_no": 25,
+            "src": "1111:7",
+            "src_char": "1111:7"
+          },
+          {
+            "contract_path": "src/libraries/ProtocolFeeLibrary.sol",
+            "line_no": 15,
+            "src": "633:9",
+            "src_char": "633:9"
+          },
+          {
+            "contract_path": "src/test/FeeTakingHook.sol",
+            "line_no": 32,
+            "src": "1097:5",
+            "src_char": "1097:5"
+          }
+        ]
+      },
+      {
+        "title": "Internal Function Used Only Once",
+        "description": "Instead of separating the logic into a separate function, consider inlining the logic into the calling function. This can reduce the number of function calls and improve readability.",
+        "detector_name": "internal-function-used-once",
+        "instances": [
+          {
+            "contract_path": "src/libraries/FullMath.sol",
+            "line_no": 14,
+            "src": "750:6",
+            "src_char": "748:6"
+          },
+          {
+            "contract_path": "src/libraries/Pool.sol",
+            "line_no": 488,
+            "src": "23309:18",
+            "src_char": "23307:18"
+          },
+          {
+            "contract_path": "src/libraries/Pool.sol",
+            "line_no": 565,
+            "src": "27574:32",
+            "src_char": "27572:32"
+          },
+          {
+            "contract_path": "src/libraries/Position.sol",
+            "line_no": 48,
+            "src": "2193:20",
+            "src_char": "2193:20"
+          },
+          {
+            "contract_path": "src/libraries/SqrtPriceMath.sol",
+            "line_no": 214,
+            "src": "10519:7",
+            "src_char": "10519:7"
+          },
+          {
+            "contract_path": "src/libraries/StateLibrary.sol",
+            "line_no": 40,
+            "src": "1589:8",
+            "src_char": "1589:8"
+          },
+          {
+            "contract_path": "src/libraries/StateLibrary.sol",
+            "line_no": 157,
+            "src": "7198:19",
+            "src_char": "7198:19"
+          },
+          {
+            "contract_path": "src/libraries/StateLibrary.sol",
+            "line_no": 254,
+            "src": "11431:15",
+            "src_char": "11431:15"
+          },
+          {
+            "contract_path": "src/libraries/TickBitmap.sol",
+            "line_no": 16,
+            "src": "645:8",
+            "src_char": "645:8"
+          },
+          {
+            "contract_path": "src/libraries/TickMath.sol",
+            "line_no": 57,
+            "src": "3158:18",
+            "src_char": "3158:18"
+          },
+          {
+            "contract_path": "src/libraries/TransientStateLibrary.sol",
+            "line_no": 23,
+            "src": "1013:17",
+            "src_char": "1013:17"
+          },
+          {
+            "contract_path": "src/test/Fuzzers.sol",
+            "line_no": 22,
+            "src": "843:19",
+            "src_char": "843:19"
+          },
+          {
+            "contract_path": "src/test/Fuzzers.sol",
+            "line_no": 37,
+            "src": "1653:26",
+            "src_char": "1653:26"
+          },
+          {
+            "contract_path": "src/test/Fuzzers.sol",
+            "line_no": 90,
+            "src": "3943:10",
+            "src_char": "3943:10"
+          },
+          {
+            "contract_path": "src/test/Fuzzers.sol",
+            "line_no": 135,
+            "src": "5833:26",
+            "src_char": "5833:26"
+          },
+          {
+            "contract_path": "src/test/Fuzzers.sol",
+            "line_no": 147,
+            "src": "6552:40",
+            "src_char": "6552:40"
+          }
+        ]
+      },
+      {
+        "title": "Contract has TODO Comments",
+        "description": "Contract contains comments with TODOS. Consider implementing or removing them.",
+        "detector_name": "todo",
+        "instances": [
+          {
+            "contract_path": "src/test/Fuzzers.sol",
+            "line_no": 17,
+            "src": "682:7",
+            "src_char": "682:7"
+          }
+        ]
+      },
+      {
+        "title": "Unused Error",
+        "description": "Consider using or removing the unused error.",
+        "detector_name": "unused-error",
+        "instances": [
+          {
+            "contract_path": "src/interfaces/IPoolManager.sol",
+            "line_no": 21,
+            "src": "889:27",
+            "src_char": "889:27"
+          },
+          {
+            "contract_path": "src/libraries/SqrtPriceMath.sol",
+            "line_no": 15,
+            "src": "463:32",
+            "src_char": "463:32"
+          },
+          {
+            "contract_path": "src/libraries/SqrtPriceMath.sol",
+            "line_no": 16,
+            "src": "500:21",
+            "src_char": "500:21"
+          },
+          {
+            "contract_path": "src/libraries/SqrtPriceMath.sol",
+            "line_no": 17,
+            "src": "526:27",
+            "src_char": "526:27"
+          },
+          {
+            "contract_path": "src/libraries/SqrtPriceMath.sol",
+            "line_no": 18,
+            "src": "558:22",
+            "src_char": "558:22"
+          },
+          {
+            "contract_path": "src/libraries/TickBitmap.sol",
+            "line_no": 13,
+            "src": "533:52",
+            "src_char": "533:52"
+          },
+          {
+            "contract_path": "src/test/ActionsRouter.sol",
+            "line_no": 41,
+            "src": "1156:27",
+            "src_char": "1156:27"
+          },
+          {
+            "contract_path": "src/test/PoolSwapTest.sol",
+            "line_no": 20,
+            "src": "742:23",
+            "src_char": "742:23"
+          },
+          {
+            "contract_path": "src/test/SwapRouterNoChecks.sol",
+            "line_no": 20,
+            "src": "731:23",
+            "src_char": "731:23"
+          }
+        ]
+      },
+      {
+        "title": "Loop Contains `require`/`revert`",
+        "description": "Avoid `require` / `revert` statements in a loop because a single bad item can cause the whole transaction to fail. It's better to forgive on fail and return failed elements post processing of the loop",
+        "detector_name": "require-revert-in-loop",
+        "instances": [
+          {
+            "contract_path": "src/libraries/Pool.sol",
+            "line_no": 344,
+            "src": "15731:5152",
+            "src_char": "15729:5152"
+          }
+        ]
+      },
+      {
+        "title": "Dead Code",
+        "description": "Functions that are not used. Consider removing them.",
+        "detector_name": "dead-code",
+        "instances": [
+          {
+            "contract_path": "src/test/Fuzzers.sol",
+            "line_no": 124,
+            "src": "5214:24",
+            "src_char": "5214:24"
+          },
+          {
+            "contract_path": "src/test/Fuzzers.sol",
+            "line_no": 161,
+            "src": "7191:20",
+            "src_char": "7191:20"
+          },
+          {
+            "contract_path": "src/test/Fuzzers.sol",
+            "line_no": 173,
+            "src": "7749:34",
+            "src_char": "7749:34"
+          }
+        ]
+      },
+      {
+        "title": "Costly operations inside loop",
+        "description": "Invoking `SSTORE` operations in loops may waste gas. Use a local variable to hold the loop computation result.",
+        "detector_name": "costly-loop",
+        "instances": [
+          {
+            "contract_path": "src/libraries/Pool.sol",
+            "line_no": 344,
+            "src": "15639:5244",
+            "src_char": "15637:5244"
+          },
+          {
+            "contract_path": "src/test/PoolNestedActionsTest.sol",
+            "line_no": 99,
+            "src": "3415:575",
+            "src_char": "3415:575"
+          },
+          {
+            "contract_path": "src/test/TickOverflowSafetyEchidnaTest.sol",
+            "line_no": 75,
+            "src": "2570:484",
+            "src_char": "2570:484"
+          }
+        ]
+      },
+      {
+        "title": "Unused Import",
+        "description": "Redundant import statement. Consider removing it.",
+        "detector_name": "unused-import",
+        "instances": [
+          {
+            "contract_path": "src/PoolManager.sol",
+            "line_no": 7,
+            "src": "201:50",
+            "src_char": "201:50"
+          },
+          {
+            "contract_path": "src/libraries/Hooks.sol",
+            "line_no": 10,
+            "src": "421:60",
+            "src_char": "421:60"
+          },
+          {
+            "contract_path": "src/test/BaseTestHooks.sol",
+            "line_no": 9,
+            "src": "356:60",
+            "src_char": "356:60"
+          },
+          {
+            "contract_path": "src/test/EmptyTestHooks.sol",
+            "line_no": 6,
+            "src": "160:60",
+            "src_char": "160:60"
+          },
+          {
+            "contract_path": "src/test/Fuzzers.sol",
+            "line_no": 7,
+            "src": "145:60",
+            "src_char": "145:60"
+          },
+          {
+            "contract_path": "src/test/LPFeeTakingHook.sol",
+            "line_no": 11,
+            "src": "457:47",
+            "src_char": "457:47"
+          },
+          {
+            "contract_path": "src/test/MockHooks.sol",
+            "line_no": 6,
+            "src": "160:60",
+            "src_char": "160:60"
+          },
+          {
+            "contract_path": "src/test/PoolClaimsTest.sol",
+            "line_no": 5,
+            "src": "113:55",
+            "src_char": "113:55"
+          },
+          {
+            "contract_path": "src/test/ProtocolFeesImplementation.sol",
+            "line_no": 9,
+            "src": "297:41",
+            "src_char": "297:41"
+          },
+          {
+            "contract_path": "src/test/ProxyPoolManager.sol",
+            "line_no": 7,
+            "src": "205:51",
+            "src_char": "205:51"
+          },
+          {
+            "contract_path": "src/types/PoolOperation.sol",
+            "line_no": 4,
+            "src": "58:45",
+            "src_char": "58:45"
+          },
+          {
+            "contract_path": "src/types/PoolOperation.sol",
+            "line_no": 5,
+            "src": "104:55",
+            "src_char": "104:55"
+          }
+        ]
+      },
+      {
+        "title": "State Variable Could Be Constant",
+        "description": "State variables that are not updated following deployment should be declared constant to save gas. Add the `constant` attribute to state variables that never change.",
+        "detector_name": "state-variable-could-be-constant",
+        "instances": [
+          {
+            "contract_path": "src/test/NativeERC20.sol",
+            "line_no": 8,
+            "src": "334:4",
+            "src_char": "334:4"
+          },
+          {
+            "contract_path": "src/test/NativeERC20.sol",
+            "line_no": 9,
+            "src": "374:6",
+            "src_char": "374:6"
+          },
+          {
+            "contract_path": "src/test/NativeERC20.sol",
+            "line_no": 10,
+            "src": "410:8",
+            "src_char": "410:8"
+          },
+          {
+            "contract_path": "src/test/PoolNestedActionsTest.sol",
+            "line_no": 86,
+            "src": "3013:14",
+            "src_char": "3013:14"
+          },
+          {
+            "contract_path": "src/test/PoolNestedActionsTest.sol",
+            "line_no": 87,
+            "src": "3060:14",
+            "src_char": "3060:14"
+          }
+        ]
+      },
+      {
+        "title": "State Change Without Event",
+        "description": "There are state variable changes in this function but no event is emitted. Consider emitting an event to enable offchain indexers to track the changes.",
+        "detector_name": "state-change-without-event",
+        "instances": [
+          {
+            "contract_path": "src/PoolManager.sol",
+            "line_no": 339,
+            "src": "15201:18",
+            "src_char": "15201:18"
+          },
+          {
+            "contract_path": "src/ProtocolFees.sol",
+            "line_no": 44,
+            "src": "1752:19",
+            "src_char": "1752:19"
+          },
+          {
+            "contract_path": "src/test/DeltaReturningHook.sol",
+            "line_no": 35,
+            "src": "1124:17",
+            "src_char": "1124:17"
+          },
+          {
+            "contract_path": "src/test/DeltaReturningHook.sol",
+            "line_no": 39,
+            "src": "1219:29",
+            "src_char": "1219:29"
+          },
+          {
+            "contract_path": "src/test/DeltaReturningHook.sol",
+            "line_no": 43,
+            "src": "1338:28",
+            "src_char": "1338:28"
+          },
+          {
+            "contract_path": "src/test/DynamicFeesTestHook.sol",
+            "line_no": 15,
+            "src": "527:10",
+            "src_char": "527:10"
+          },
+          {
+            "contract_path": "src/test/DynamicFeesTestHook.sol",
+            "line_no": 19,
+            "src": "620:6",
+            "src_char": "620:6"
+          },
+          {
+            "contract_path": "src/test/DynamicReturnFeeTestHook.sol",
+            "line_no": 18,
+            "src": "628:10",
+            "src_char": "628:10"
+          },
+          {
+            "contract_path": "src/test/DynamicReturnFeeTestHook.sol",
+            "line_no": 22,
+            "src": "721:6",
+            "src_char": "721:6"
+          },
+          {
+            "contract_path": "src/test/MockContract.sol",
+            "line_no": 39,
+            "src": "1569:17",
+            "src_char": "1569:17"
+          },
+          {
+            "contract_path": "src/test/MockHooks.sol",
+            "line_no": 31,
+            "src": "1104:16",
+            "src_char": "1104:16"
+          },
+          {
+            "contract_path": "src/test/MockHooks.sol",
+            "line_no": 37,
+            "src": "1412:15",
+            "src_char": "1412:15"
+          },
+          {
+            "contract_path": "src/test/MockHooks.sol",
+            "line_no": 43,
+            "src": "1724:18",
+            "src_char": "1724:18"
+          },
+          {
+            "contract_path": "src/test/MockHooks.sol",
+            "line_no": 53,
+            "src": "2108:17",
+            "src_char": "2108:17"
+          },
+          {
+            "contract_path": "src/test/MockHooks.sol",
+            "line_no": 66,
+            "src": "2591:21",
+            "src_char": "2591:21"
+          },
+          {
+            "contract_path": "src/test/MockHooks.sol",
+            "line_no": 76,
+            "src": "2984:20",
+            "src_char": "2984:20"
+          },
+          {
+            "contract_path": "src/test/MockHooks.sol",
+            "line_no": 89,
+            "src": "3476:10",
+            "src_char": "3476:10"
+          },
+          {
+            "contract_path": "src/test/MockHooks.sol",
+            "line_no": 103,
+            "src": "3936:9",
+            "src_char": "3936:9"
+          },
+          {
+            "contract_path": "src/test/MockHooks.sol",
+            "line_no": 113,
+            "src": "4309:12",
+            "src_char": "4309:12"
+          },
+          {
+            "contract_path": "src/test/MockHooks.sol",
+            "line_no": 123,
+            "src": "4661:11",
+            "src_char": "4661:11"
+          },
+          {
+            "contract_path": "src/test/MockHooks.sol",
+            "line_no": 133,
+            "src": "5010:14",
+            "src_char": "5010:14"
+          },
+          {
+            "contract_path": "src/test/MockHooks.sol",
+            "line_no": 137,
+            "src": "5117:8",
+            "src_char": "5117:8"
+          },
+          {
+            "contract_path": "src/test/PoolNestedActionsTest.sol",
+            "line_no": 93,
+            "src": "3208:6",
+            "src_char": "3208:6"
+          },
+          {
+            "contract_path": "src/test/PoolNestedActionsTest.sol",
+            "line_no": 97,
+            "src": "3287:7",
+            "src_char": "3287:7"
+          },
+          {
+            "contract_path": "src/test/ProtocolFeesImplementation.sol",
+            "line_no": 18,
+            "src": "668:8",
+            "src_char": "668:8"
+          },
+          {
+            "contract_path": "src/test/ProtocolFeesImplementation.sol",
+            "line_no": 27,
+            "src": "988:13",
+            "src_char": "988:13"
+          },
+          {
+            "contract_path": "src/test/ProtocolFeesImplementation.sol",
+            "line_no": 35,
+            "src": "1178:18",
+            "src_char": "1178:18"
+          },
+          {
+            "contract_path": "src/test/ProxyPoolManager.sol",
+            "line_no": 186,
+            "src": "7792:18",
+            "src_char": "7792:18"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 27,
+            "src": "1137:10",
+            "src_char": "1137:10"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 31,
+            "src": "1230:16",
+            "src_char": "1230:16"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 37,
+            "src": "1465:15",
+            "src_char": "1465:15"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 47,
+            "src": "1733:18",
+            "src_char": "1733:18"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 58,
+            "src": "2058:17",
+            "src_char": "2058:17"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 71,
+            "src": "2473:21",
+            "src_char": "2473:21"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 82,
+            "src": "2807:20",
+            "src_char": "2807:20"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 95,
+            "src": "3231:10",
+            "src_char": "3231:10"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 105,
+            "src": "3576:9",
+            "src_char": "3576:9"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 115,
+            "src": "3881:12",
+            "src_char": "3881:12"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 125,
+            "src": "4171:11",
+            "src_char": "4171:11"
+          },
+          {
+            "contract_path": "src/test/TestERC20.sol",
+            "line_no": 14,
+            "src": "415:4",
+            "src_char": "415:4"
+          },
+          {
+            "contract_path": "src/test/TestInvalidERC20.sol",
+            "line_no": 15,
+            "src": "479:4",
+            "src_char": "479:4"
+          },
+          {
+            "contract_path": "src/test/TickOverflowSafetyEchidnaTest.sol",
+            "line_no": 25,
+            "src": "782:28",
+            "src_char": "782:28"
+          },
+          {
+            "contract_path": "src/test/TickOverflowSafetyEchidnaTest.sol",
+            "line_no": 31,
+            "src": "1023:28",
+            "src_char": "1023:28"
+          },
+          {
+            "contract_path": "src/test/TickOverflowSafetyEchidnaTest.sol",
+            "line_no": 37,
+            "src": "1264:11",
+            "src_char": "1264:11"
+          },
+          {
+            "contract_path": "src/test/TickOverflowSafetyEchidnaTest.sol",
+            "line_no": 72,
+            "src": "2454:10",
+            "src_char": "2454:10"
+          }
+        ]
+      },
+      {
+        "title": "State Variable Could Be Immutable",
+        "description": "State variables that are only changed in the constructor should be declared immutable to save gas. Add the `immutable` attribute to state variables that are only changed in the constructor",
+        "detector_name": "state-variable-could-be-immutable",
+        "instances": [
+          {
+            "contract_path": "src/test/ActionsRouter.sol",
+            "line_no": 46,
+            "src": "1308:7",
+            "src_char": "1308:7"
+          },
+          {
+            "contract_path": "src/test/PoolEmptyUnlockTest.sol",
+            "line_no": 10,
+            "src": "299:7",
+            "src_char": "299:7"
+          },
+          {
+            "contract_path": "src/test/PoolNestedActionsTest.sol",
+            "line_no": 32,
+            "src": "1189:7",
+            "src_char": "1189:7"
+          },
+          {
+            "contract_path": "src/test/PoolNestedActionsTest.sol",
+            "line_no": 33,
+            "src": "1230:8",
+            "src_char": "1230:8"
+          },
+          {
+            "contract_path": "src/test/PoolNestedActionsTest.sol",
+            "line_no": 34,
+            "src": "1252:4",
+            "src_char": "1252:4"
+          },
+          {
+            "contract_path": "src/test/PoolNestedActionsTest.sol",
+            "line_no": 73,
+            "src": "2498:4",
+            "src_char": "2498:4"
+          }
+        ]
+      },
+      {
+        "title": "Unchecked Return",
+        "description": "Function returns a value but it is ignored. Consider checking the return value.",
+        "detector_name": "unchecked-return",
+        "instances": [
+          {
+            "contract_path": "src/libraries/Hooks.sol",
+            "line_no": 180,
+            "src": "9147:87",
+            "src_char": "9147:87"
+          },
+          {
+            "contract_path": "src/libraries/Hooks.sol",
+            "line_no": 190,
+            "src": "9552:92",
+            "src_char": "9552:92"
+          },
+          {
+            "contract_path": "src/libraries/Hooks.sol",
+            "line_no": 202,
+            "src": "10053:93",
+            "src_char": "10053:93"
+          },
+          {
+            "contract_path": "src/libraries/Hooks.sol",
+            "line_no": 204,
+            "src": "10261:96",
+            "src_char": "10261:96"
+          },
+          {
+            "contract_path": "src/libraries/Hooks.sol",
+            "line_no": 323,
+            "src": "15824:97",
+            "src_char": "15824:97"
+          },
+          {
+            "contract_path": "src/libraries/Hooks.sol",
+            "line_no": 333,
+            "src": "16252:96",
+            "src_char": "16252:96"
+          },
+          {
+            "contract_path": "src/test/ActionsRouter.sol",
+            "line_no": 92,
+            "src": "3310:43",
+            "src_char": "3310:43"
+          },
+          {
+            "contract_path": "src/test/ActionsRouter.sol",
+            "line_no": 96,
+            "src": "3404:16",
+            "src_char": "3404:16"
+          },
+          {
+            "contract_path": "src/test/ActionsRouter.sol",
+            "line_no": 106,
+            "src": "3715:28",
+            "src_char": "3715:28"
+          },
+          {
+            "contract_path": "src/test/ActionsRouter.sol",
+            "line_no": 163,
+            "src": "6275:83",
+            "src_char": "6275:83"
+          },
+          {
+            "contract_path": "src/test/ActionsRouter.sol",
+            "line_no": 168,
+            "src": "6549:49",
+            "src_char": "6549:49"
+          },
+          {
+            "contract_path": "src/test/HooksTest.sol",
+            "line_no": 60,
+            "src": "2461:57",
+            "src_char": "2461:57"
+          },
+          {
+            "contract_path": "src/test/NoDelegateCallTest.sol",
+            "line_no": 17,
+            "src": "534:21",
+            "src_char": "534:21"
+          },
+          {
+            "contract_path": "src/test/NoDelegateCallTest.sol",
+            "line_no": 23,
+            "src": "733:24",
+            "src_char": "733:24"
+          },
+          {
+            "contract_path": "src/test/PoolClaimsTest.sol",
+            "line_no": 27,
+            "src": "884:82",
+            "src_char": "884:82"
+          },
+          {
+            "contract_path": "src/test/PoolClaimsTest.sol",
+            "line_no": 32,
+            "src": "1121:83",
+            "src_char": "1121:83"
+          },
+          {
+            "contract_path": "src/test/PoolEmptyUnlockTest.sol",
+            "line_no": 17,
+            "src": "426:18",
+            "src_char": "426:18"
+          },
+          {
+            "contract_path": "src/test/PoolNestedActionsTest.sol",
+            "line_no": 43,
+            "src": "1482:20",
+            "src_char": "1482:20"
+          },
+          {
+            "contract_path": "src/test/PoolNestedActionsTest.sol",
+            "line_no": 61,
+            "src": "2170:18",
+            "src_char": "2170:18"
+          },
+          {
+            "contract_path": "src/test/PoolNestedActionsTest.sol",
+            "line_no": 114,
+            "src": "4214:18",
+            "src_char": "4214:18"
+          },
+          {
+            "contract_path": "src/test/PoolNestedActionsTest.sol",
+            "line_no": 227,
+            "src": "10643:49",
+            "src_char": "10643:49"
+          },
+          {
+            "contract_path": "src/test/PoolTakeTest.sol",
+            "line_no": 25,
+            "src": "798:75",
+            "src_char": "798:75"
+          },
+          {
+            "contract_path": "src/test/ProxyPoolManager.sol",
+            "line_no": 152,
+            "src": "6296:97",
+            "src_char": "6296:97"
+          },
+          {
+            "contract_path": "src/test/ProxyPoolManager.sol",
+            "line_no": 172,
+            "src": "7155:94",
+            "src_char": "7155:94"
+          },
+          {
+            "contract_path": "src/test/ProxyPoolManager.sol",
+            "line_no": 177,
+            "src": "7400:91",
+            "src_char": "7400:91"
+          },
+          {
+            "contract_path": "src/test/ProxyPoolManager.sol",
+            "line_no": 182,
+            "src": "7644:93",
+            "src_char": "7644:93"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 138,
+            "src": "4606:51",
+            "src_char": "4606:51"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 142,
+            "src": "4775:49",
+            "src_char": "4775:49"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 153,
+            "src": "5417:60",
+            "src_char": "5417:60"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 171,
+            "src": "6305:63",
+            "src_char": "6305:63"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 173,
+            "src": "6412:60",
+            "src_char": "6412:60"
+          },
+          {
+            "contract_path": "src/test/SkipCallsTestHook.sol",
+            "line_no": 186,
+            "src": "7064:55",
+            "src_char": "7064:55"
+          },
+          {
+            "contract_path": "src/test/SwapRouterNoChecks.sol",
+            "line_no": 29,
+            "src": "952:65",
+            "src_char": "952:65"
+          },
+          {
+            "contract_path": "src/test/TickMathTest.sol",
+            "line_no": 13,
+            "src": "414:33",
+            "src_char": "414:33"
+          },
+          {
+            "contract_path": "src/test/TickMathTest.sol",
+            "line_no": 23,
+            "src": "792:41",
+            "src_char": "792:41"
+          },
+          {
+            "contract_path": "src/test/TickOverflowSafetyEchidnaTest.sol",
+            "line_no": 78,
+            "src": "2711:68",
+            "src_char": "2711:68"
+          },
+          {
+            "contract_path": "src/test/TickOverflowSafetyEchidnaTest.sol",
+            "line_no": 83,
+            "src": "2923:64",
+            "src_char": "2923:64"
+          }
+        ]
+      }
+    ]
+  },
+  "detectors_used": [
+    "delegatecall-in-loop",
+    "centralization-risk",
+    "solmate-safe-transfer-lib",
+    "abi-encode-packed-hash-collision",
+    "ecrecover",
+    "deprecated-oz-function",
+    "unsafe-erc20-operation",
+    "unspecific-solidity-pragma",
+    "state-no-address-check",
+    "unused-public-function",
+    "literal-instead-of-constant",
+    "empty-require-revert",
+    "non-reentrant-not-first",
+    "block-timestamp-deadline",
+    "unsafe-oz-erc721-mint",
+    "push-zero-opcode",
+    "arbitrary-transfer-from",
+    "modifier-used-only-once",
+    "empty-block",
+    "large-numeric-literal",
+    "internal-function-used-once",
+    "todo",
+    "inconsistent-type-names",
+    "unprotected-initializer",
+    "unused-error",
+    "require-revert-in-loop",
+    "division-before-multiplication",
+    "unsafe-casting",
+    "enumerable-loop-removal",
+    "experimental-encoder",
+    "incorrect-shift-order",
+    "storage-array-memory-edit",
+    "multiple-constructors",
+    "reused-contract-name",
+    "nested-struct-in-mapping",
+    "selfdestruct",
+    "dynamic-array-length-assignment",
+    "incorrect-caret-operator",
+    "yul-return",
+    "state-variable-shadowing",
+    "unchecked-send",
+    "misused-boolean",
+    "eth-send-unchecked-address",
+    "delegate-call-unchecked-address",
+    "tautological-compare",
+    "rtlo",
+    "dangerous-unary-operator",
+    "tautology-or-contradiction",
+    "strict-equality-contract-balance",
+    "signed-integer-storage-array",
+    "redundant-statement",
+    "state-variable-read-external",
+    "weak-randomness",
+    "pre-declared-local-variable-usage",
+    "delete-nested-mapping",
+    "unused-state-variable",
+    "constant-function-contains-assembly",
+    "boolean-equality",
+    "tx-origin-used-for-auth",
+    "msg-value-in-loop",
+    "contract-locks-ether",
+    "local-variable-shadowing",
+    "incorrect-erc721-interface",
+    "incorrect-erc20-interface",
+    "uninitialized-local-variable",
+    "return-bomb",
+    "out-of-order-retryable",
+    "function-initializing-state",
+    "dead-code",
+    "storage-array-length-not-cached",
+    "assert-state-change",
+    "costly-loop",
+    "constant-function-changes-state",
+    "builtin-symbol-shadowing",
+    "void-constructor",
+    "function-selector-collision",
+    "missing-inheritance",
+    "unused-import",
+    "unchecked-low-level-call",
+    "function-pointer-in-constructor",
+    "state-variable-could-be-constant",
+    "state-change-without-event",
+    "state-variable-could-be-immutable",
+    "multiple-placeholders",
+    "reentrancy-state-change",
+    "incorrect-use-of-modifier",
+    "unchecked-return"
+  ]
+}
