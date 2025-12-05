@@ -1,0 +1,650 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Multi-Agent Bug Hunting Master State",
+  "description": "Persistent state tracking across all cycles of bug bounty hunting analysis",
+  "type": "object",
+  "required": [
+    "project_metadata",
+    "cycle_tracking",
+    "bug_tracking",
+    "exploration_tracking",
+    "agent_performance",
+    "metadata"
+  ],
+  "properties": {
+    "project_metadata": {
+      "type": "object",
+      "description": "Immutable project information",
+      "required": ["project_id", "project_name", "blockchain", "protocol_type"],
+      "properties": {
+        "project_id": {
+          "type": "string",
+          "description": "Unique identifier for this project",
+          "pattern": "^[a-z0-9-]+$",
+          "example": "uniswap-v4-hooks"
+        },
+        "project_name": {
+          "type": "string",
+          "description": "Human-readable project name",
+          "example": "Uniswap V4 Hook System"
+        },
+        "blockchain": {
+          "type": "array",
+          "description": "Target blockchains",
+          "items": {
+            "type": "string",
+            "enum": ["ethereum", "arbitrum", "optimism", "polygon", "bsc", "avalanche", "base", "other"]
+          },
+          "example": ["ethereum", "arbitrum"]
+        },
+        "protocol_type": {
+          "type": "string",
+          "enum": ["AMM", "Lending", "Staking", "Governance", "NFT", "Bridge", "Derivatives", "Yield", "Other"],
+          "description": "Primary protocol category"
+        },
+        "repository_url": {
+          "type": "string",
+          "format": "uri",
+          "example": "https://github.com/uniswap/v4-core"
+        },
+        "deployed_addresses": {
+          "type": "object",
+          "description": "Deployed contract addresses by chain",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "address": {
+                "type": "string",
+                "pattern": "^0x[a-fA-F0-9]{40}$"
+              },
+              "deployment_block": {
+                "type": "integer"
+              }
+            }
+          },
+          "example": {
+            "ethereum": {
+              "address": "0x1234567890123456789012345678901234567890",
+              "deployment_block": 18000000
+            }
+          }
+        },
+        "bounty_platform": {
+          "type": "string",
+          "enum": ["immunefi", "hackerone", "code4rena", "sherlock", "other"],
+          "example": "immunefi"
+        },
+        "bounty_program_url": {
+          "type": "string",
+          "format": "uri",
+          "example": "https://immunefi.com/bounty/project-name"
+        },
+        "analysis_start_date": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2025-01-15T10:00:00Z"
+        }
+      }
+    },
+    
+    "cycle_tracking": {
+      "type": "object",
+      "description": "Current cycle state and history",
+      "required": ["current_cycle", "cycles_completed", "cycle_history"],
+      "properties": {
+        "current_cycle": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "description": "Current cycle number (1-5 max)"
+        },
+        "cycles_completed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5,
+          "description": "Number of completed cycles"
+        },
+        "current_cycle_status": {
+          "type": "string",
+          "enum": [
+            "not_started",
+            "scout_in_progress",
+            "scout_complete",
+            "pattern_hunter_in_progress",
+            "pattern_hunter_complete",
+            "critic_pattern_in_progress",
+            "critic_pattern_complete",
+            "logic_auditor_in_progress",
+            "logic_auditor_complete",
+            "critic_logic_in_progress",
+            "critic_logic_complete",
+            "exploit_engineer_in_progress",
+            "exploit_engineer_complete",
+            "reporter_in_progress",
+            "reporter_complete",
+            "strategist_in_progress",
+            "strategist_complete"
+          ]
+        },
+        "cycle_history": {
+          "type": "array",
+          "description": "Summary of each completed cycle",
+          "items": {
+            "type": "object",
+            "required": ["cycle_number", "bugs_found", "focus_areas", "outcome"],
+            "properties": {
+              "cycle_number": {
+                "type": "integer"
+              },
+              "start_timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "end_timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "duration_hours": {
+                "type": "number"
+              },
+              "bugs_found": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "bugs_by_severity": {
+                "type": "object",
+                "properties": {
+                  "critical": {"type": "integer"},
+                  "high": {"type": "integer"},
+                  "medium": {"type": "integer"},
+                  "low": {"type": "integer"}
+                }
+              },
+              "focus_areas": {
+                "type": "array",
+                "items": {"type": "string"},
+                "example": ["flash_loan_attacks", "governance_vectors", "oracle_manipulation"]
+              },
+              "outcome": {
+                "type": "string",
+                "enum": ["productive", "diminishing_returns", "zero_findings", "stopped"]
+              },
+              "tokens_used": {
+                "type": "integer",
+                "description": "Approximate tokens consumed this cycle"
+              },
+              "estimated_bounty_value_usd": {
+                "type": "number"
+              },
+              "cycle_roi": {
+                "type": "number",
+                "description": "Return on investment for this cycle"
+              }
+            }
+          }
+        }
+      }
+    },
+    
+    "bug_tracking": {
+      "type": "object",
+      "description": "All discovered vulnerabilities",
+      "required": ["total_bugs_found", "bugs_by_severity", "validated_bugs"],
+      "properties": {
+        "total_bugs_found": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total count of validated bugs across all cycles"
+        },
+        "bugs_by_severity": {
+          "type": "object",
+          "required": ["critical", "high", "medium", "low"],
+          "properties": {
+            "critical": {"type": "integer", "minimum": 0},
+            "high": {"type": "integer", "minimum": 0},
+            "medium": {"type": "integer", "minimum": 0},
+            "low": {"type": "integer", "minimum": 0}
+          }
+        },
+        "validated_bugs": {
+          "type": "array",
+          "description": "All bugs that passed PoC validation",
+          "items": {
+            "type": "object",
+            "required": ["bug_id", "title", "severity", "cycle_found", "status"],
+            "properties": {
+              "bug_id": {
+                "type": "string",
+                "pattern": "^BUG-[0-9]{3}$",
+                "example": "BUG-001"
+              },
+              "title": {
+                "type": "string",
+                "example": "Oracle Manipulation via Flash Loan"
+              },
+              "severity": {
+                "type": "string",
+                "enum": ["critical", "high", "medium", "low"]
+              },
+              "immunefi_category": {
+                "type": "string",
+                "enum": [
+                  "direct-theft-of-funds",
+                  "permanent-freezing-of-funds",
+                  "protocol-insolvency",
+                  "governance-voting-manipulation",
+                  "theft-of-unclaimed-yield",
+                  "temporary-freezing-of-funds",
+                  "contract-unable-to-operate",
+                  "griefing",
+                  "unbounded-gas-consumption",
+                  "contract-fails-to-deliver"
+                ]
+              },
+              "cycle_found": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 5
+              },
+              "discovered_by_agent": {
+                "type": "string",
+                "enum": ["pattern_hunter", "logic_auditor"]
+              },
+              "validated_by_critic": {
+                "type": "boolean"
+              },
+              "poc_exists": {
+                "type": "boolean"
+              },
+              "poc_file": {
+                "type": "string",
+                "example": "test/ExploitOracle.t.sol"
+              },
+              "affected_contracts": {
+                "type": "array",
+                "items": {"type": "string"},
+                "example": ["PriceOracle.sol", "Liquidation.sol"]
+              },
+              "affected_functions": {
+                "type": "array",
+                "items": {"type": "string"},
+                "example": ["getPrice()", "liquidate()"]
+              },
+              "measured_impact": {
+                "type": "object",
+                "properties": {
+                  "max_extractable_value_usd": {"type": "number"},
+                  "attack_cost_usd": {"type": "number"},
+                  "net_profit_usd": {"type": "number"},
+                  "roi": {"type": "number"},
+                  "users_affected": {"type": "integer"},
+                  "tvl_at_risk_usd": {"type": "number"}
+                }
+              },
+              "status": {
+                "type": "string",
+                "enum": ["validated", "reported", "triaged", "fixed", "paid_out", "disputed"]
+              },
+              "report_id": {
+                "type": "string",
+                "pattern": "^RPT-[0-9]{3}$",
+                "example": "RPT-001"
+              },
+              "estimated_bounty_usd": {
+                "type": "object",
+                "properties": {
+                  "min": {"type": "number"},
+                  "max": {"type": "number"}
+                }
+              },
+              "submission_date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "notes": {
+                "type": "string",
+                "description": "Additional context or observations"
+              }
+            }
+          }
+        },
+        "false_positives_caught": {
+          "type": "array",
+          "description": "Findings that were proven false during analysis",
+          "items": {
+            "type": "object",
+            "properties": {
+              "finding_id": {"type": "string"},
+              "title": {"type": "string"},
+              "initially_claimed_severity": {"type": "string"},
+              "caught_by_agent": {
+                "type": "string",
+                "enum": ["critic_pattern", "critic_logic", "exploit_engineer"]
+              },
+              "cycle": {"type": "integer"},
+              "reason_false_positive": {"type": "string"},
+              "evidence": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    
+    "exploration_tracking": {
+      "type": "object",
+      "description": "What has been analyzed and what remains",
+      "required": ["contracts_analyzed", "paths_explored", "dead_ends"],
+      "properties": {
+        "contracts_analyzed": {
+          "type": "array",
+          "description": "List of all contract files analyzed",
+          "items": {
+            "type": "object",
+            "properties": {
+              "filename": {"type": "string"},
+              "first_analyzed_cycle": {"type": "integer"},
+              "last_analyzed_cycle": {"type": "integer"},
+              "coverage_level": {
+                "type": "string",
+                "enum": ["surface", "moderate", "deep", "exhaustive"]
+              },
+              "loc": {"type": "integer"},
+              "complexity": {
+                "type": "string",
+                "enum": ["low", "medium", "high", "critical"]
+              }
+            }
+          }
+        },
+        "paths_explored": {
+          "type": "object",
+          "description": "Exploration paths by analysis type",
+          "properties": {
+            "reconnaissance": {
+              "type": "array",
+              "items": {"type": "string"},
+              "example": ["architecture_mapping", "business_logic_documentation", "on_chain_verification"]
+            },
+            "static_analysis": {
+              "type": "array",
+              "items": {"type": "string"},
+              "example": ["reentrancy_checks", "access_control_audit", "integer_overflow_patterns"]
+            },
+            "logic_analysis": {
+              "type": "array",
+              "items": {"type": "string"},
+              "example": ["flash_loan_attack_surface", "oracle_manipulation_modeling", "governance_takeover_scenarios"]
+            },
+            "exploit_testing": {
+              "type": "array",
+              "items": {"type": "string"},
+              "example": ["oracle_manipulation_poc", "flash_loan_integration_testing", "governance_exploit_simulation"]
+            }
+          }
+        },
+        "dead_ends": {
+          "type": "array",
+          "description": "Documented paths that led nowhere (prevent redundancy)",
+          "items": {
+            "type": "object",
+            "required": ["path", "reason", "cycle", "agent"],
+            "properties": {
+              "path": {
+                "type": "string",
+                "description": "What was attempted",
+                "example": "Reentrancy in claim() via callback"
+              },
+              "reason": {
+                "type": "string",
+                "description": "Why it's not exploitable",
+                "example": "Protected by OpenZeppelin ReentrancyGuard with proper CEI pattern"
+              },
+              "cycle": {
+                "type": "integer",
+                "description": "Which cycle discovered this dead end"
+              },
+              "agent": {
+                "type": "string",
+                "enum": ["scout", "pattern_hunter", "critic_pattern", "logic_auditor", "critic_logic", "exploit_engineer"]
+              },
+              "confidence": {
+                "type": "string",
+                "enum": ["low", "medium", "high"],
+                "description": "How confident we are this is truly a dead end"
+              },
+              "evidence": {
+                "type": "string",
+                "description": "Proof/reasoning supporting dead-end classification"
+              }
+            }
+          }
+        },
+        "cold_spots": {
+          "type": "array",
+          "description": "Unexplored or under-explored areas",
+          "items": {
+            "type": "object",
+            "properties": {
+              "area": {"type": "string"},
+              "reason_unexplored": {"type": "string"},
+              "estimated_value": {
+                "type": "string",
+                "enum": ["critical", "high", "medium", "low", "unknown"]
+              },
+              "complexity": {
+                "type": "string",
+                "enum": ["low", "medium", "high", "very-high"]
+              },
+              "recommended_cycle": {"type": "integer"}
+            }
+          }
+        },
+        "coverage_metrics": {
+          "type": "object",
+          "description": "Quantitative coverage measurements",
+          "properties": {
+            "total_contracts": {"type": "integer"},
+            "contracts_analyzed": {"type": "integer"},
+            "contract_coverage_percentage": {"type": "number"},
+            "total_public_functions": {"type": "integer"},
+            "functions_analyzed": {"type": "integer"},
+            "function_coverage_percentage": {"type": "number"},
+            "total_attack_vectors_identified": {"type": "integer"},
+            "attack_vectors_explored": {"type": "integer"},
+            "attack_vector_coverage_percentage": {"type": "number"},
+            "overall_coverage_percentage": {"type": "number"}
+          }
+        }
+      }
+    },
+    
+    "agent_performance": {
+      "type": "object",
+      "description": "Performance tracking for each agent across cycles",
+      "properties": {
+        "scout": {
+          "$ref": "#/definitions/agent_metrics"
+        },
+        "pattern_hunter": {
+          "$ref": "#/definitions/agent_metrics"
+        },
+        "critic_pattern": {
+          "$ref": "#/definitions/agent_metrics"
+        },
+        "logic_auditor": {
+          "$ref": "#/definitions/agent_metrics"
+        },
+        "critic_logic": {
+          "$ref": "#/definitions/agent_metrics"
+        },
+        "exploit_engineer": {
+          "$ref": "#/definitions/agent_metrics"
+        },
+        "reporter": {
+          "$ref": "#/definitions/agent_metrics"
+        },
+        "strategist": {
+          "$ref": "#/definitions/agent_metrics"
+        },
+        "supervisor": {
+          "$ref": "#/definitions/agent_metrics"
+        }
+      }
+    },
+    
+    "strategist_decisions": {
+      "type": "array",
+      "description": "History of strategist decisions at end of each cycle",
+      "items": {
+        "type": "object",
+        "properties": {
+          "cycle": {"type": "integer"},
+          "decision": {
+            "type": "string",
+            "enum": ["continue", "stop"]
+          },
+          "reasoning": {"type": "string"},
+          "cycle_roi": {"type": "number"},
+          "cumulative_roi": {"type": "number"},
+          "coverage_at_decision": {"type": "number"},
+          "bugs_found_last_2_cycles": {"type": "integer"},
+          "next_cycle_focus": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        }
+      }
+    },
+    
+    "metadata": {
+      "type": "object",
+      "description": "System-level tracking",
+      "required": ["schema_version", "last_updated"],
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+          "example": "1.0.0"
+        },
+        "last_updated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "total_tokens_used": {
+          "type": "integer",
+          "description": "Cumulative tokens across all agents and cycles"
+        },
+        "total_cost_usd": {
+          "type": "number",
+          "description": "Cumulative cost (tokens + time)"
+        },
+        "total_time_hours": {
+          "type": "number",
+          "description": "Human time spent across all cycles"
+        },
+        "state_file_size_kb": {
+          "type": "number",
+          "description": "Current size of master_state.json"
+        },
+        "estimated_total_bounty_usd": {
+          "type": "number",
+          "description": "Sum of all bug bounty estimates"
+        },
+        "cumulative_roi": {
+          "type": "number",
+          "description": "Total bounty value / total cost"
+        },
+        "analysis_status": {
+          "type": "string",
+          "enum": ["in_progress", "completed", "stopped", "paused"]
+        },
+        "completion_reason": {
+          "type": "string",
+          "enum": ["exhaustive_analysis", "diminishing_returns", "cycle_limit_reached", "manual_stop", null]
+        }
+      }
+    }
+  },
+  
+  "definitions": {
+    "agent_metrics": {
+      "type": "object",
+      "description": "Performance metrics for a single agent",
+      "properties": {
+        "total_executions": {
+          "type": "integer",
+          "description": "How many times this agent has run"
+        },
+        "total_time_hours": {
+          "type": "number",
+          "description": "Cumulative time spent"
+        },
+        "average_time_hours": {
+          "type": "number"
+        },
+        "supervisor_rejections": {
+          "type": "integer",
+          "description": "Total rejections by supervisor"
+        },
+        "rejection_rate": {
+          "type": "number",
+          "description": "Percentage of submissions rejected"
+        },
+        "findings_generated": {
+          "type": "integer",
+          "description": "Total findings produced"
+        },
+        "findings_validated": {
+          "type": "integer",
+          "description": "Findings that passed downstream validation"
+        },
+        "false_positive_rate": {
+          "type": "number",
+          "description": "Percentage of findings that were false positives"
+        },
+        "efficiency_score": {
+          "type": "string",
+          "enum": ["excellent", "good", "acceptable", "poor"],
+          "description": "Overall efficiency rating"
+        },
+        "cycle_performance": {
+          "type": "array",
+          "description": "Per-cycle breakdown",
+          "items": {
+            "type": "object",
+            "properties": {
+              "cycle": {"type": "integer"},
+              "time_hours": {"type": "number"},
+              "output_quality": {
+                "type": "string",
+                "enum": ["excellent", "good", "acceptable", "poor"]
+              },
+              "supervisor_status": {
+                "type": "string",
+                "enum": ["approved_first_attempt", "approved_after_rejection", "escalated"]
+              },
+              "findings_count": {"type": "integer"},
+              "notes": {"type": "string"}
+            }
+          }
+        },
+        "known_issues": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Recurring problems identified"
+        },
+        "improvements_implemented": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "cycle": {"type": "integer"},
+              "improvement": {"type": "string"},
+              "impact": {"type": "string"}
+            }
+          }
+        }
+      }
+    }
+  }
+}
