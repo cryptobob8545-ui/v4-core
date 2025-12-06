@@ -1,0 +1,48 @@
+{
+  "agent_validated": "Reporter",
+  "cycle": 0,
+  "timestamp": "2025-12-06T02:30:00Z",
+  "attempt_number": 1,
+  "status": "APPROVED",
+  "completeness_check": {
+    "required_sections": [
+      {"section": "one_report_per_proven_bug", "present": true, "quality": "good"},
+      {"section": "immunefi_template", "present": true, "quality": "good"},
+      {"section": "poc_included", "present": true, "quality": "good"},
+      {"section": "impact_quantified", "present": true, "quality": "excellent"},
+      {"section": "severity_alignment", "present": true, "quality": "good"},
+      {"section": "professional_tone", "present": true, "quality": "excellent"}
+    ],
+    "overall_completeness": "100%",
+    "missing_critical_elements": []
+  },
+  "format_validation": {
+    "valid_json": true,
+    "schema_compliance": true,
+    "data_type_errors": [],
+    "malformed_sections": []
+  },
+  "scope_compliance": {
+    "stayed_in_lane": true,
+    "scope_violations": [],
+    "doing_other_agents_work": false
+  },
+  "quality_assessment": {
+    "thoroughness": "good",
+    "professional_quality": "excellent",
+    "evidence_based": true,
+    "references_previous_work": true,
+    "avoids_redundancy": true,
+    "overall_quality": "good"
+  },
+  "approval_decision": {
+    "decision": "APPROVED",
+    "confidence": "high",
+    "reasoning": "Report follows Immunefi-style structure with quantified impact, PoC instructions, and professional tone. No scope or format issues detected.",
+    "minor_issues": [],
+    "caveats_for_downstream": []
+  },
+  "metadata": {
+    "validation_time_minutes": 10
+  }
+}
