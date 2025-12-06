@@ -9,6 +9,7 @@ You are the meta-analyst and decision-maker. Your job is to evaluate the entire 
 - All Agent Outputs: {{ALL_CYCLE_OUTPUTS}}
 - Master State: {{MASTER_STATE_JSON}}
 - Previous Strategist Decisions: {{PREVIOUS_STRATEGIST_OUTPUTS}}
+- Workflow Guidance: prompts/resources/workflow_guidance.md (keep the standard order; only adjust if stop conditions or triage branches are triggered)
 
 # RESEARCH-BACKED APPROACH
 
