@@ -1,116 +1,130 @@
 {
-  "cycle": 0,
-  "timestamp": "2025-12-06T00:00:00Z",
+  "cycle": 1,
+  "timestamp": "2025-12-07T00:00:00Z",
   "contracts_analyzed": [
-    {"name": "PoolManager.sol", "purpose": "Aggregates all AMM pool state and routes initialize/swap/liquidity/donate calls with hook integration and transient balance accounting.", "loc": 395, "complexity": "high", "external_calls": ["IHooks.beforeInitialize()", "IHooks.afterInitialize()", "IHooks.beforeModifyLiquidity()", "IHooks.afterModifyLiquidity()", "IHooks.beforeSwap()", "IHooks.afterSwap()", "IHooks.beforeDonate()", "IHooks.afterDonate()", "IUnlockCallback.unlockCallback()", "Currency.transfer()"], "key_state_variables": ["mapping(PoolId => Pool.State) _pools", "MAX_TICK_SPACING", "MIN_TICK_SPACING"], "upgrade_pattern": "none"},
-    {"name": "ProtocolFees.sol", "purpose": "Ownable protocol fee controller tracking accrued protocol fees and allowing collection per currency.", "loc": 71, "complexity": "medium", "external_calls": ["Currency.transfer()"], "key_state_variables": ["mapping(Currency => uint256) protocolFeesAccrued", "address protocolFeeController"], "upgrade_pattern": "none"},
-    {"name": "Extsload.sol", "purpose": "Helper contract exposing external storage slot reads for off-chain testing and views.", "loc": 64, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "Exttload.sol", "purpose": "Helper enabling transient storage slot reads for debug or tooling.", "loc": 40, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "NoDelegateCall.sol", "purpose": "Modifier guard preventing delegatecall entry for protected functions.", "loc": 33, "complexity": "low", "external_calls": [], "key_state_variables": ["bool initialized"], "upgrade_pattern": "none"},
-    {"name": "ERC6909.sol", "purpose": "Minimal ERC6909 multi-token implementation with mint/burn/transfer approvals.", "loc": 90, "complexity": "medium", "external_calls": [], "key_state_variables": ["mapping(address => mapping(address => bool)) isOperator", "mapping(address => mapping(uint256 => uint256)) balanceOf", "mapping(address => mapping(address => mapping(uint256 => uint256))) allowance"], "upgrade_pattern": "none"},
-    {"name": "ERC6909Claims.sol", "purpose": "Extension for ERC6909 enabling burn-from with allowance check to model claim tokens.", "loc": 23, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "IExtsload.sol", "purpose": "Interface for extsload helpers exposing storage batch reads.", "loc": 21, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "IExttload.sol", "purpose": "Interface for transient storage load helper.", "loc": 15, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "IHooks.sol", "purpose": "Defines optional pool hook callbacks and permission bitmasks for AMM extensibility.", "loc": 152, "complexity": "medium", "external_calls": [], "key_state_variables": ["uint256 flags", "HookPerm flag constants"], "upgrade_pattern": "none"},
-    {"name": "IPoolManager.sol", "purpose": "Interface describing PoolManager external API for unlocking, initializing, swapping, liquidity, settle/take, and fee updates.", "loc": 217, "complexity": "medium", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "IProtocolFees.sol", "purpose": "Interface for setting/collecting protocol fees and reading configuration.", "loc": 52, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "IUnlockCallback.sol", "purpose": "Interface for unlock callback invoked during PoolManager.unlock.", "loc": 10, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "IERC20Minimal.sol", "purpose": "Minimal ERC20 interface used for token transfers and balances.", "loc": 48, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "IERC6909Claims.sol", "purpose": "Interface mirroring ERC6909 with burnFrom for claim tokens.", "loc": 66, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "BitMath.sol", "purpose": "Library for bit operations like most significant bit/least significant bit.", "loc": 49, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "CurrencyDelta.sol", "purpose": "Library for mapping Currency types to ERC6909 ids for balance deltas.", "loc": 42, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "CurrencyReserves.sol", "purpose": "Library handling reserve syncing for Currency types.", "loc": 39, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "CustomRevert.sol", "purpose": "Library wrapping revert selector helpers for custom errors.", "loc": 120, "complexity": "medium", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "FixedPoint128.sol", "purpose": "Constants for Q128 fixed point math.", "loc": 8, "complexity": "low", "external_calls": [], "key_state_variables": ["uint256 Q128"], "upgrade_pattern": "none"},
-    {"name": "FixedPoint96.sol", "purpose": "Constants for Q96 fixed point math.", "loc": 10, "complexity": "low", "external_calls": [], "key_state_variables": ["uint8 RESOLUTION", "uint256 Q96"], "upgrade_pattern": "none"},
-    {"name": "FullMath.sol", "purpose": "128x128 full-precision multiplication/division helpers.", "loc": 117, "complexity": "medium", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "Hooks.sol", "purpose": "Library validating hook addresses, checking permissions, and mediating hook calls including delta overrides and fee overrides.", "loc": 340, "complexity": "high", "external_calls": ["IHooks.* low-level calls"], "key_state_variables": ["Hook permission bitmask constants"], "upgrade_pattern": "none"},
-    {"name": "LPFeeLibrary.sol", "purpose": "Library for LP fee encoding/decoding and dynamic fee handling.", "loc": 79, "complexity": "medium", "external_calls": [], "key_state_variables": ["uint24 DYNAMIC_FEE_FLAG"], "upgrade_pattern": "none"},
-    {"name": "LiquidityMath.sol", "purpose": "Library ensuring liquidity delta fits int128 bounds.", "loc": 20, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "Lock.sol", "purpose": "Library managing global unlocked flag in transient storage.", "loc": 28, "complexity": "low", "external_calls": [], "key_state_variables": ["bytes32 LOCKED_SLOT"], "upgrade_pattern": "none"},
-    {"name": "NonzeroDeltaCount.sol", "purpose": "Library tracking nonzero transient deltas requiring settlement.", "loc": 35, "complexity": "low", "external_calls": [], "key_state_variables": ["bytes32 SLOT"], "upgrade_pattern": "none"},
-    {"name": "ParseBytes.sol", "purpose": "Utilities to parse uint24/int24 from byte arrays.", "loc": 29, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "Pool.sol", "purpose": "Core AMM pool state machine handling initialization, swaps, liquidity modifications, fee accounting, tick management, and donations.", "loc": 613, "complexity": "critical", "external_calls": [], "key_state_variables": ["Slot0 slot0", "uint256 feeGrowthGlobal0X128", "uint256 feeGrowthGlobal1X128", "uint128 liquidity", "mapping ticks", "mapping tickBitmap", "mapping positions"], "upgrade_pattern": "none"},
-    {"name": "Position.sol", "purpose": "Library for LP position accounting across ticks and fee growth.", "loc": 103, "complexity": "medium", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "ProtocolFeeLibrary.sol", "purpose": "Library validating protocol fee bounds and combining with LP fee.", "loc": 47, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "SafeCast.sol", "purpose": "Library for safe numeric casts between integer sizes.", "loc": 60, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "SqrtPriceMath.sol", "purpose": "Mathematics for AMM price movement and token amount calculations per tick.", "loc": 289, "complexity": "high", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "StateLibrary.sol", "purpose": "Library to load pool state components via extsload and helpers.", "loc": 349, "complexity": "high", "external_calls": ["Extsload.extsload()"], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "SwapMath.sol", "purpose": "Swap math for iterative price steps and amount conversions.", "loc": 108, "complexity": "medium", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "TickBitmap.sol", "purpose": "Bitmap tracking initialized ticks and searching for next set bit.", "loc": 122, "complexity": "medium", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "TickMath.sol", "purpose": "Conversions between ticks and sqrt price representations with limits.", "loc": 238, "complexity": "high", "external_calls": [], "key_state_variables": ["int24 MIN_TICK", "int24 MAX_TICK", "uint160 MIN_SQRT_PRICE", "uint160 MAX_SQRT_PRICE", "int24 MAX_TICK_SPACING"], "upgrade_pattern": "none"},
-    {"name": "TransientStateLibrary.sol", "purpose": "Library handling transient storage slots for deltas keyed by user and currency.", "loc": 49, "complexity": "medium", "external_calls": [], "key_state_variables": ["bytes32 BALANCE_DELTA_SLOT"], "upgrade_pattern": "none"},
-    {"name": "UnsafeMath.sol", "purpose": "Unchecked arithmetic helpers with minimal gas overhead.", "loc": 29, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "BalanceDelta.sol", "purpose": "Type library encoding signed token deltas for two-token pools.", "loc": 72, "complexity": "medium", "external_calls": [], "key_state_variables": ["uint256 internal value"], "upgrade_pattern": "none"},
-    {"name": "BeforeSwapDelta.sol", "purpose": "Struct wrapping pre-swap deltas and limit checks.", "loc": 38, "complexity": "low", "external_calls": [], "key_state_variables": ["int256 amount0", "int256 amount1"], "upgrade_pattern": "none"},
-    {"name": "Currency.sol", "purpose": "Type-safe currency wrapper supporting native and ERC20, with transfer helpers and ERC6909 id mapping.", "loc": 119, "complexity": "medium", "external_calls": ["IERC20Minimal.transfer()", "IERC20Minimal.balanceOf()"], "key_state_variables": ["address constant NATIVE", "address constant ADDRESS_ZERO"], "upgrade_pattern": "none"},
-    {"name": "PoolId.sol", "purpose": "Type library computing pool identifier from PoolKey.", "loc": 17, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "PoolKey.sol", "purpose": "Struct defining pool currencies, fee, tick spacing, and hooks with helpers to derive id and validate fees.", "loc": 22, "complexity": "low", "external_calls": [], "key_state_variables": ["Currency currency0", "Currency currency1", "uint24 fee", "int24 tickSpacing", "IHooks hooks"], "upgrade_pattern": "none"},
-    {"name": "PoolOperation.sol", "purpose": "Struct definitions for modifyLiquidity and swap parameter bundles.", "loc": 26, "complexity": "low", "external_calls": [], "key_state_variables": [], "upgrade_pattern": "none"},
-    {"name": "Slot0.sol", "purpose": "Pool slot0 struct with tick, sqrtPrice, protocol fee fields, and helpers for updates.", "loc": 94, "complexity": "medium", "external_calls": [], "key_state_variables": ["uint160 sqrtPriceX96", "int24 tick", "uint24 protocolFee", "uint24 lpFee"], "upgrade_pattern": "none"}
+    {
+      "name": "ProxyPoolManager.sol",
+      "purpose": "Delegatecall facade wrapping PoolManager entrypoints while keeping local pool storage for testing proxy-like routing.",
+      "loc": 222,
+      "complexity": "high",
+      "external_calls": ["delegatecall to real manager", "IHooks.beforeInitialize()", "IHooks.afterInitialize()"],
+      "key_state_variables": ["mapping(PoolId => Pool.State) _pools", "address _delegateManager"],
+      "upgrade_pattern": "delegatecall-router"
+    },
+    {
+      "name": "ActionsRouter.sol",
+      "purpose": "Unlock callback executing scripted sequences of settle/take/mint/sync/assert actions for integration tests.",
+      "loc": 170,
+      "complexity": "medium",
+      "external_calls": ["IPoolManager.unlock()", "IPoolManager.settle()", "IPoolManager.take()"],
+      "key_state_variables": ["IPoolManager manager"],
+      "upgrade_pattern": "none"
+    },
+    {
+      "name": "ProtocolFeesImplementation.sol",
+      "purpose": "Thin ProtocolFees harness exposing internal helpers and configurable unlocked state for fee tests.",
+      "loc": 38,
+      "complexity": "low",
+      "external_calls": [],
+      "key_state_variables": ["mapping(PoolId => Pool.State) _pools", "bool isUnlocked"],
+      "upgrade_pattern": "none"
+    },
+    {
+      "name": "FeeTakingHook.sol",
+      "purpose": "Hook implementation charging additional swap and liquidity fees by pulling tokens via PoolManager.take().",
+      "loc": 91,
+      "complexity": "medium",
+      "external_calls": ["IPoolManager.take()"],
+      "key_state_variables": ["uint128 LIQUIDITY_FEE", "uint128 SWAP_FEE_BIPS", "IPoolManager manager"],
+      "upgrade_pattern": "none"
+    },
+    {
+      "name": "BaseTestHooks.sol",
+      "purpose": "Abstract hook contract reverting all callbacks to force explicit overrides in test hooks.",
+      "loc": 78,
+      "complexity": "low",
+      "external_calls": [],
+      "key_state_variables": [],
+      "upgrade_pattern": "none"
+    }
   ],
   "architecture": {
-    "protocol_type": "Bridge",
+    "protocol_type": "AMM",
     "contract_topology": {
       "core_contracts": ["PoolManager", "Pool"],
-      "periphery_contracts": ["ProtocolFees", "ERC6909", "ERC6909Claims", "Extsload", "Exttload", "NoDelegateCall"],
-      "external_dependencies": ["ERC20 tokens via IERC20Minimal", "External hook contracts implementing IHooks", "Unlock callback implementers"]
+      "periphery_contracts": ["ProtocolFees", "ERC6909", "ERC6909Claims", "Extsload", "Exttload"],
+      "external_dependencies": ["ERC20 tokens", "Hook contracts implementing IHooks", "Unlock callback implementers", "delegate PoolManager target used by ProxyPoolManager"]
     },
     "inheritance_chains": {
-      "PoolManager": ["ProtocolFees", "NoDelegateCall", "ERC6909Claims", "Extsload", "Exttload"],
-      "ProtocolFees": ["Owned (from solmate)"]
+      "ProxyPoolManager": ["ProtocolFees", "NoDelegateCall", "ERC6909Claims", "Extsload", "Exttload"],
+      "ActionsRouter": ["forge-std/Test"],
+      "ProtocolFeesImplementation": ["ProtocolFees"],
+      "FeeTakingHook": ["BaseTestHooks", "IHooks"]
     },
     "admin_controls": {
-      "owner_functions": ["setProtocolFeeController(address)", "setProtocolFee(PoolKey,uint24)"],
+      "owner_functions": ["ProtocolFees.setProtocolFeeController", "ProtocolFees.setProtocolFee"],
       "timelock_delay": "none noted",
       "multisig_threshold": "not specified"
     }
   },
   "business_logic": {
-    "core_mechanics": "PoolManager manages all pools identified by PoolKey/PoolId. Users call unlock() to temporarily open transient state, then perform swaps, liquidity modifications, or donations with hook callbacks. Actions accrue BalanceDelta per currency; settle/settleFor sync incoming funds, take/takePortion withdraw owed amounts, and mint/burn convert deltas to ERC6909 claim tokens. Hooks can intercept lifecycle events to alter amounts, enforce custom logic, or override LP fee dynamically.",
+    "core_mechanics": "Building on Cycle 0 mapping of PoolManager-centric AMM, this cycle focused on helper proxies and hooks. ProxyPoolManager front-ends PoolManager with delegatecall while maintaining its own pool storage and enforcing the same unlock/lock and hook calls. ActionsRouter demonstrates how unlock can drive sequences of settlement, mint, clear, sync, and invariant checks in a single callback. FeeTakingHook shows hooks collecting extra basis-point fees on swaps and liquidity changes by calling take() to move tokens to the hook contract.",
     "economic_model": {
-      "token_flows": "During unlock, modifyLiquidity or swap adjusts pool reserves and fee growth while recording caller deltas. settle/settleFor credit provided tokens (native via msg.value or pre-approved ERC20) to clear negative deltas; take/takePortion withdraw positive deltas to recipients; mint/burn convert deltas to ERC6909 balances rather than immediate transfers. Donations increase fee growth for LPs.",
-      "fee_structure": "Each pool uses LP fee (static or dynamic via hooks) and protocol fee set by controller. Swap computes total fee, splits protocol share recorded in ProtocolFees, and LP share added to feeGrowthGlobal for positions.",
-      "incentive_mechanisms": "LPs earn swap fees and benefit from donations; hooks may implement custom incentives or fee sharing.",
-      "collateral_requirements": "Callers must settle negative deltas before relocking; no external collateralization beyond owed token accounting."},
+      "token_flows": "ProxyPoolManager mirrors PoolManager token flow: user unlocks, delegatecalls to real manager for swap/liquidity/donate, then uses local settlement functions to move balances. ActionsRouter sequences settle/take/mint/clear to reconcile transient deltas. FeeTakingHook extracts percentage fees from swap outputs or liquidity adds/removes via manager.take to the hook contract.",
+      "fee_structure": "In addition to PoolManager LP and protocol fees (Cycle 0), hooks like FeeTakingHook can levy extra liquidity or swap fees expressed in basis points of amounts returned by PoolManager deltas.",
+      "incentive_mechanisms": "Custom hooks may redirect fee revenue to hook owners; routers support scripted flows for tests rather than production incentives.",
+      "collateral_requirements": "ProxyPoolManager inherits unlock requirement: NonzeroDeltaCount must reach zero before relock, and hook-driven take calls require available balances in manager." 
+    },
     "critical_state_transitions": [
-      {"trigger": "unlock()", "state_change": "Sets global unlocked flag, executes caller's unlockCallback, verifies NonzeroDeltaCount reset, then relocks.", "side_effects": "All subsequent actions must complete and settle within callback."},
-      {"trigger": "initialize()", "state_change": "Validates tick spacing and currency order, calls before/after hook, sets initial sqrtPrice, lpFee, and tick, emits Initialize event.", "side_effects": "Registers pool in _pools mapping."},
-      {"trigger": "modifyLiquidity()", "state_change": "Updates position liquidity and fee accruals, adjusts pool liquidity, accounts caller deltas, and processes hook-returned deltas if permitted.", "side_effects": "Emits ModifyLiquidity and updates NonzeroDeltaCount for transient balances."},
-      {"trigger": "swap()", "state_change": "Executes swap math through Pool library, updating price, liquidity steps, and fee accrual while handling before/after hook callbacks and optional delta overrides.", "side_effects": "Protocol fee accrued, swap deltas accounted to caller."},
-      {"trigger": "donate()", "state_change": "Adds provided amounts to pool fee growth without price movement, optionally routed through hooks.", "side_effects": "Emits Donate and updates fee growth for LPs."},
-      {"trigger": "settle()/settleFor()/take()/takePortion()/mint()/burn()", "state_change": "Applies transient deltas to balances or ERC6909 claims and ensures NonzeroDeltaCount tracking returns to zero before relock.", "side_effects": "Transfers tokens or adjusts claim balances"}
+      {
+        "trigger": "ProxyPoolManager.modifyLiquidity/swap/donate",
+        "state_change": "Delegatecall into target manager to mutate pool state while enforcing local unlocked check.",
+        "side_effects": "Reverts bubble from delegatecall; pool storage local to proxy updated." 
+      },
+      {
+        "trigger": "ActionsRouter.executeActions",
+        "state_change": "Unlock callback iterates provided action list, performing settle/take/mint/clear/sync or assertions.",
+        "side_effects": "Sequences can consume msg.value for native settle and adjust nonzero delta counters." 
+      },
+      {
+        "trigger": "FeeTakingHook.afterSwap/afterAddLiquidity/afterRemoveLiquidity",
+        "state_change": "Computes proportional fee from deltas and invokes manager.take to transfer tokens to hook.",
+        "side_effects": "Hook retains collected fees; returned BalanceDelta may adjust caller expectations." 
+      }
     ],
     "invariants": [
-      "NonzeroDeltaCount must be zero when Lock relocks after unlock sequence",
-      "Pools must be initialized before swaps or liquidity changes",
-      "Currency deltas tracked in transient storage should net to zero once all settle/take/mint/burn actions complete",
-      "Protocol fee per pool constrained by ProtocolFeeLibrary bounds",
-      "Tick spacing within TickMath MIN/MAX limits"
+      "ProxyPoolManager only operates when Lock.isUnlocked is true and relock requires NonzeroDeltaCount == 0 after unlock callback.",
+      "ActionsRouter parameter lengths for actions and params must match, otherwise revert CheckParameters.",
+      "FeeTakingHook expects PoolManager msg.sender and assumes swap/liquidity deltas align with fee calculations." 
     ]
   },
   "attack_surface": {
     "high_priority_areas": [
-      {"location": "PoolManager.unlock()", "reason": "Opens global lock and requires external unlockCallback to settle deltas within same transaction.", "complexity": "high", "external_calls": true, "research_note": "Lock/unlock with callbacks expands reentrancy-like surfaces."},
-      {"location": "PoolManager.modifyLiquidity() / swap() / donate()", "reason": "Core AMM operations with optional before/after hooks and dynamic fee overrides.", "complexity": "high", "external_calls": true, "research_note": "Hook-controlled deltas and fee overrides are complex integration points."},
-      {"location": "PoolManager.settle()/settleFor()/take()/takePortion()/mint()/burn()", "reason": "User-directed balance settlement and withdrawals based on transient deltas.", "complexity": "medium", "external_calls": false, "research_note": "Settlement logic correctness critical for fund accounting."},
-      {"location": "ProtocolFees.setProtocolFee()/collectProtocolFees()", "reason": "Admin/controller adjustable fees and withdrawals touch pooled funds.", "complexity": "medium", "external_calls": true, "research_note": "Fee parameterization impacts pool economics."},
-      {"location": "Extsload/Exttload public helpers", "reason": "Expose arbitrary storage reads (including transient) to external callers.", "complexity": "low", "external_calls": false, "research_note": "Data exposure surfaces off-chain tooling and potential information leaks."},
-      {"location": "ERC6909/Claims public mint/burn/transfer approvals", "reason": "Multi-token ledger used for claim tokens and settlement tracking.", "complexity": "medium", "external_calls": false, "research_note": "Token accounting correctness underpins claim mechanics."}
+      {
+        "location": "ProxyPoolManager._delegateCall()",
+        "reason": "Bubbles return data from delegatecall to external manager while sharing storage for pools.",
+        "complexity": "high",
+        "external_calls": true,
+        "research_note": "Delegatecall routers can inherit callee revert paths and rely on strict noDelegateCall modifier enforcement." 
+      },
+      {
+        "location": "ActionsRouter.unlockCallback()",
+        "reason": "Accepts arbitrary action arrays controlling settle/take/mint/clear and assertions during unlock window.",
+        "complexity": "medium",
+        "external_calls": true,
+        "research_note": "Sequenced operations in a single callback highlight how users might chain settlement and withdrawals." 
+      },
+      {
+        "location": "FeeTakingHook.afterSwap/afterAddLiquidity/afterRemoveLiquidity",
+        "reason": "Hook pulls tokens via PoolManager.take based on swap/liquidity amounts.",
+        "complexity": "medium",
+        "external_calls": true,
+        "research_note": "Hook-controlled fees alter expected payouts and rely on delta interpretations." 
+      }
     ],
-    "public_external_functions": {
-      "PoolManager": ["unlock(bytes)", "initialize(PoolKey,uint160)", "modifyLiquidity(PoolKey,ModifyLiquidityParams,bytes)", "swap(PoolKey,SwapParams,bytes)", "donate(PoolKey,uint256,uint256,bytes)", "sync(Currency)", "take(Currency,address,uint256)", "takePortion(Currency,address,uint256)", "settle()", "settleFor(address)", "mint(address,uint256,uint256)", "burn(address,uint256,uint256)", "updateDynamicLPFee(PoolKey,uint24)"],
-      "ProtocolFees": ["setProtocolFeeController(address)", "setProtocolFee(PoolKey,uint24)", "collectProtocolFees(address,Currency,uint256)", "protocolFeesAccrued(Currency)", "protocolFeeController()"],
-      "Extsload": ["extsload(bytes32)", "extsload(bytes32,uint256)", "extsload(bytes32[])"] ,
-      "Exttload": ["exttload(bytes32)", "exttload(bytes32,uint256)", "exttload(bytes32[])"] ,
-      "ERC6909": ["approve(address,uint256,bool)", "setOperator(address,bool)", "mint(address,uint256,uint256)", "burn(address,uint256,uint256)", "transfer(address,address,uint256,uint256,bytes)", "transferFrom(address,address,address,uint256,uint256)", "isOperator(address,address)", "allowance(address,address,address,uint256)", "balanceOf(address,uint256)"] ,
-      "ERC6909Claims": ["burnFrom(address,address,uint256,uint256)"] ,
-      "Hooks library exposed via IHooks": ["all before/after hook callbacks returning deltas/fees"],
-      "Interfaces": ["IPoolManager methods", "IProtocolFees methods", "IHooks callbacks", "IExtsload/Exttload loaders"]
-    },
     "oracle_dependencies": [],
-    "flash_loan_exposure": ["modifyLiquidity and swap can be executed inside single unlock window enabling same-transaction capital usage"],
-    "upgrade_risks": ["Contracts are not proxy-based; control risk centers on owner/controller adjusting protocol fees and hook addresses supplied by users"]
+    "flash_loan_exposure": ["ProxyPoolManager and ActionsRouter maintain unlock-based atomicity, so swap/liquidity actions and hook fee extraction can be combined with same-transaction capital."],
+    "upgrade_risks": ["ProxyPoolManager delegates to an external manager address without internal upgrades; trust rests on provided delegate and owner-controlled protocol fees."]
   },
   "on_chain_analysis": {
     "deployment_address": "unknown",
@@ -120,20 +134,26 @@
     "unusual_patterns": []
   },
   "areas_requiring_deep_dive": [
-    {"area": "Pool.swap step math and protocol fee allocation", "reason": "Iterative price/fee computation with multiple libraries.", "agents_to_investigate": ["Logic Auditor", "Exploit Engineer"]},
-    {"area": "Hook permission gating and delta overrides", "reason": "Bitmask-based validation and external hook responses alter balances and fees.", "agents_to_investigate": ["Logic Auditor", "Exploit Engineer"]},
-    {"area": "Transient balance accounting across settle/take/mint/burn", "reason": "Relies on NonzeroDeltaCount and TransientStateLibrary tracking.", "agents_to_investigate": ["Logic Auditor"]}
+    {
+        "area": "Delegatecall semantics between ProxyPoolManager and PoolManager",
+        "reason": "Shared storage and unlock enforcement combined with external delegate target merit deeper correctness review.",
+        "agents_to_investigate": ["Logic Auditor", "Exploit Engineer"]
+    },
+    {
+        "area": "Hook-driven fee extraction math",
+        "reason": "FeeTakingHook computations on swap outputs and liquidity deltas influence user payouts and settlement flow.",
+        "agents_to_investigate": ["Logic Auditor"]
+    }
   ],
-  "paths_explored_this_cycle": ["architecture_mapping", "business_logic_documentation", "attack_surface_identification"],
+  "paths_explored_this_cycle": ["proxy_and_router_tests", "hook_fee_behaviors", "delegatecall_integration"],
   "questions_for_next_agent": [
-    "Do hook-returned deltas in afterSwap/afterModifyLiquidity handle sign conventions and max input/output limits correctly?",
-    "Can dynamic LP fee updates via updateDynamicLPFee be combined with protocol fee bounds to create unexpected fee levels?",
-    "Are transient deltas fully cleared when minting/burning claim tokens instead of settling/taking?"
+    "How does ProxyPoolManager storage alignment with the delegate PoolManager handle pool state updates across upgrades?",
+    "Can hook-imposed fees like FeeTakingHook interact with protocol and LP fees to produce unexpected effective rates?"
   ],
   "metadata": {
-    "total_contracts": 43,
-    "total_loc": 7741,
-    "complexity_distribution": {"low": 21, "medium": 15, "high": 5, "critical": 2},
-    "time_spent_hours": 3.0
+    "total_contracts": 48,
+    "total_loc": 8260,
+    "complexity_distribution": {"low": 22, "medium": 17, "high": 7, "critical": 2},
+    "time_spent_hours": 2.5
   }
 }
