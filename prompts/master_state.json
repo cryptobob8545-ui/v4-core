@@ -558,6 +558,11 @@
           "type": "string",
           "enum": ["in_progress", "completed", "stopped", "paused"]
         },
+        "latest_strategist_output": {
+          "type": "string",
+          "description": "Path to the most recent strategist decision output JSON for traceability",
+          "example": "prompts/agent_outputs/06_strategist_output.json"
+        },
         "completion_reason": {
           "type": "string",
           "enum": ["exhaustive_analysis", "diminishing_returns", "cycle_limit_reached", "manual_stop", null]
